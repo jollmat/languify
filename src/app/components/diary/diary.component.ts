@@ -82,6 +82,8 @@ export class DiaryComponent implements OnInit, OnDestroy {
 
   languages: {code: string, label: string}[] = [];
 
+  userAgent!: string;
+  deviceType!: string;
   isTablet = signal(false);
   isDesktop = signal(false);
 
@@ -109,8 +111,10 @@ export class DiaryComponent implements OnInit, OnDestroy {
       }));
     }
 
-    this.deviceService.tablet$.subscribe(val => this.isTablet.set(val));
-    this.deviceService.desktop$.subscribe(val => this.isDesktop.set(val));
+    this.userAgent = this.deviceService.getUserAgent();
+    this.deviceType = this.deviceService.getDeviceType();
+    this.isTablet.set(this.deviceService.isTablet());
+    this.isDesktop.set(this.deviceService.isDesktop());
   }
 
   ngOnDestroy() { 

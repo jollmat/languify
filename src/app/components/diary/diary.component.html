@@ -2,7 +2,7 @@
 
   <div class="d-flex justify-content-between align-items-center w-100">
     <h1 class="mb-4 text-center">
-        Languify
+        Languify <small>For <span *ngIf="isTablet()">tablet</span><span *ngIf="isDesktop()">desktop</span></small>
     </h1>
     <!--
     <button class="btn btn-sm btn-outline-secondary mb-3" (click)="toggleDarkMode()">
@@ -117,11 +117,11 @@
         <div class="d-flex gap-2">
             <div class="w-50 textarea-container">
                 <i class="fas fa-copy cursor-pointer" title="Copy to clipboard" (click)="copyToClipboard('source-textarea')" [ngClass]="{disabled:content.length===0}"></i>
-                <textarea #textarea1 id="source-textarea" (scroll)="syncScroll(textarea1, textarea2, $event)" class="form-control w-100" rows="20" placeholder="Escribe o dicta aquí..." [disabled]="speaking()" [(ngModel)]="content" (ngModelChange)="onTextChange($event)"></textarea>
+                <textarea #textarea1 id="source-textarea" (scroll)="syncScroll(textarea1, textarea2, $event)" class="form-control w-100" rows="{{(isDesktop()?20:10)}}" placeholder="Escribe o dicta aquí..." [disabled]="speaking()" [(ngModel)]="content" (ngModelChange)="onTextChange($event)"></textarea>
             </div>
             <div class="w-50 textarea-container">
                 <i class="fas fa-copy cursor-pointer" title="Copy to clipboard" (click)="copyToClipboard('target-textarea')" [ngClass]="{disabled:contentTranslated.length===0}"></i>
-                <textarea #textarea2 id="target-textarea" (scroll)="syncScroll(textarea2, textarea1, $event)"  class="form-control w-100" rows="20" style="font-style: italic;" placeholder="" [disabled]="true" [(ngModel)]="contentTranslated"></textarea>                
+                <textarea #textarea2 id="target-textarea" (scroll)="syncScroll(textarea2, textarea1, $event)"  class="form-control w-100" rows="{{(isDesktop()?20:10)}}" style="font-style: italic;" placeholder="" [disabled]="true" [(ngModel)]="contentTranslated"></textarea>                
             </div>
         </div>
 

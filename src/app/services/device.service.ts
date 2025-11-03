@@ -1,46 +1,38 @@
-import { Injectable, HostListener } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeviceService {
-  // Observables para que otros componentes se subscriban
-  private tabletSubject = new BehaviorSubject<boolean>(false);
-  private desktopSubject = new BehaviorSubject<boolean>(false);
 
-  tablet$ = this.tabletSubject.asObservable();
-  desktop$ = this.desktopSubject.asObservable();
+  private userAgent: string;
 
   constructor() {
-    // Detectar al cargar
-    this.detectDevice(window.innerWidth);
-
-    // Detectar cuando la ventana cambia de tamaño
-    window.addEventListener('resize', () => {
-      this.detectDevice(window.innerWidth);
-    });
+    this.userAgent = navigator.userAgent.toLowerCase();
   }
 
-  private detectDevice(width: number) {
-    if (width >= 768 && width <= 1024) {
-      this.tabletSubject.next(true);
-      this.desktopSubject.next(false);
-    } else if (width > 1024) {
-      this.desktopSubject.next(true);
-      this.tabletSubject.next(false);
-    } else {
-      this.desktopSubject.next(false);
-      this.tabletSubject.next(false);
-    }
-  }
-
-  // Métodos convenientes
   isTablet(): boolean {
-    return this.tabletSubject.value;
+    // Detectar tablets (iPad, Android tablet, Kindle, etc.)
+    return /ipad|tablet|playbook|silk/.test(this.userAgent);
   }
 
   isDesktop(): boolean {
-    return this.desktopSubject.value;
+    // Desktop si no es móvil ni tablet
+    return !this.isTablet() && !this.isMobile();
+  }
+
+  isMobile(): boolean {
+    // Detectar móviles (iPhone, Android phone, iPod, etc.)
+    return /mobile|iphone|ipod|android/.test(this.userAgent);
+  }
+
+  getUserAgent() {
+    return this.userAgent;
+  }
+
+  getDeviceType(): 'mobile' | 'tablet' | 'desktop' {
+    if (this.isMobile()) return 'mobile';
+    if (this.isTablet()) return 'tablet';
+    return 'desktop';
   }
 }
