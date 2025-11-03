@@ -59,6 +59,7 @@ textarea.form-control, input.form-control {
 /* Input file */
 input[type="file"] {
   cursor: pointer;
+  width: 370px;
 }
 
 /* Responsividad para móviles */
@@ -180,4 +181,23 @@ textarea {
 
 small {
   font-size: 13px;
+}
+
+.fixed-header {
+  background-color: $bg-dark;
+  position: sticky;
+  top: 0px;
+  z-index:1;
+}
+
+.mobile {
+  font-size: 25px;
+  h1 { font-size: 90px; }
+  small { font-size: 30px; }
+  input { 
+    font-size: 24px; 
+    &[type="file"] {
+      width: 500px;
+    }
+  }
 }

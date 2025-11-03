@@ -1,32 +1,36 @@
-<div class="container p-2 w-100 h-100" [ngClass]="{'dark-mode':darkMode()}">
-
-  <div class="d-flex justify-content-between align-items-center w-100">
-    <h1 class="mb-4 text-center">
-        Languify <small>For <span *ngIf="isTablet()">tablet</span><span *ngIf="isDesktop()">desktop</span></small>
-    </h1>
-    <!--
-    <button class="btn btn-sm btn-outline-secondary mb-3" (click)="toggleDarkMode()">
-        <i class="fas" [ngClass]="darkMode() ? 'fa-sun' : 'fa-moon'"></i>
-        {{ darkMode() ? 'Modo Claro' : 'Modo Oscuro' }}
-    </button>
-    -->
-    <div class="d-flex align-items-center">
-        <input #fileInput type="file" style="width: auto;" class="form-control m-0" (change)="importFileEvent($event)" />
+<div class="container p-2 w-100 h-100" [ngClass]="{'dark-mode':darkMode(), 'mobile': isMobile()}">
+  <div class="fixed-header">
+    <div class="d-flex flex-row justify-content-between align-items-center w-100 mb-4">
+      <h1 class="text-center">
+          Languify 
+          <small>For 
+            <span *ngIf="isTablet()">tablet</span>
+            <span *ngIf="isDesktop()">desktop</span>
+            <span *ngIf="isMobile()">mobile</span>
+          </small>
+      </h1>
+      <!--
+      <button class="btn btn-sm btn-outline-secondary mb-3" (click)="toggleDarkMode()">
+          <i class="fas" [ngClass]="darkMode() ? 'fa-sun' : 'fa-moon'"></i>
+          {{ darkMode() ? 'Modo Claro' : 'Modo Oscuro' }}
+      </button>
+      -->
+      <input #fileInput type="file" class="form-control m-0" (change)="importFileEvent($event)" />
     </div>
-  </div>
-  
-  <!-- Controles superiores -->
-  <div class="d-flex flex-fill align-items-center gap-1 mb-3">
-    <app-voice-input placeholder="Buscar..." [multilanguage]="true" [(ngModel)]="query" (ngModelChange)="search()" [currentLang]="selectedLang" [darkMode]="true"></app-voice-input>
-  </div>
+    
+    <!-- Controles superiores -->
+    <div class="d-flex flex-fill align-items-center gap-1 mb-3">
+      <app-voice-input placeholder="Buscar..." [multilanguage]="true" [(ngModel)]="query" (ngModelChange)="search()" [currentLang]="selectedLang" [darkMode]="true"></app-voice-input>
+    </div>
 
-  <!-- Lista de entradas con tabla -->
-  <div class="d-flex w-100 justify-content-between align-items-center">
-    <h5 class="my-3">Entries <sup *ngIf="entries.length>0" class="ms-1">({{entries.length}})</sup></h5>
-    <div class="d-flex gap-2 pe-2">
-        <button class="btn btn-sm btn-primary" (click)="newEntry(entryModalTemplate)"><i class="fas fa-plus"></i> New entry</button>
-        <button class="btn btn-sm btn-success" (click)="export()"><i class="fas fa-file-export"></i> Export JSON</button>
-        <button class="btn btn-sm btn-light" (click)="openTableConfig(tableConfigModalTemplate)"><i class="fas fa-gear"></i></button>
+    <!-- Lista de entradas con tabla -->
+    <div class="d-flex w-100 justify-content-between align-items-center" [ngClass]="{'flex-row': isMobile()}">
+      <h5 class="my-3">Entries <sup *ngIf="entries.length>0" class="ms-1">({{entries.length}})</sup></h5>
+      <div class="d-flex gap-2 pe-2" [ngClass]="{'flex-row': isMobile()}">
+          <button class="btn btn-sm btn-primary" (click)="newEntry(entryModalTemplate)"><i class="fas fa-plus"></i> New entry</button>
+          <button class="btn btn-sm btn-success" (click)="export()"><i class="fas fa-file-export"></i> Export JSON</button>
+          <button class="btn btn-sm btn-light" (click)="openTableConfig(tableConfigModalTemplate)"><i class="fas fa-gear"></i></button>
+      </div>
     </div>
   </div>
   

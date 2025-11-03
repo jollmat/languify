@@ -86,6 +86,7 @@ export class DiaryComponent implements OnInit, OnDestroy {
   deviceType!: string;
   isTablet = signal(false);
   isDesktop = signal(false);
+  isMobile = signal(false);
 
   constructor(
     private readonly diary: DiaryService, 
@@ -115,6 +116,16 @@ export class DiaryComponent implements OnInit, OnDestroy {
     this.deviceType = this.deviceService.getDeviceType();
     this.isTablet.set(this.deviceService.isTablet());
     this.isDesktop.set(this.deviceService.isDesktop());
+    this.isMobile.set(this.deviceService.isMobile());
+
+    this.columns = {
+      title: {visible: true},
+      content: {visible: !this.isMobile()},
+      language: {visible: true},
+      voice: {visible: true},
+      created: {visible: false},
+      updated: {visible: false}
+    };
   }
 
   ngOnDestroy() { 
