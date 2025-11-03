@@ -1,9 +1,13 @@
 BUILD
 ------
 
-ng build --base-href "https://github.com/jollmat/languify/"
+ng build --configuration production --base-href "/languify/"
 
 DEPLOY
 ------
 
-npx angular-cli-ghpages --dir=dist/languify/browser
+mv dist/languify/browser/* dist/languify/   
+
+rmdir dist/languify/browser     
+
+npx angular-cli-ghpages --dir=dist/languify
