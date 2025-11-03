@@ -1,0 +1,229 @@
+<div class="container p-2 w-100 h-100" [ngClass]="{'dark-mode':darkMode()}">
+
+  <div class="d-flex justify-content-between align-items-center w-100">
+    <h1 class="mb-4 text-center">
+        Languify
+    </h1>
+    <!--
+    <button class="btn btn-sm btn-outline-secondary mb-3" (click)="toggleDarkMode()">
+        <i class="fas" [ngClass]="darkMode() ? 'fa-sun' : 'fa-moon'"></i>
+        {{ darkMode() ? 'Modo Claro' : 'Modo Oscuro' }}
+    </button>
+    -->
+    <div class="d-flex align-items-center">
+        <input #fileInput type="file" style="width: auto;" class="form-control m-0" (change)="importFileEvent($event)" />
+    </div>
+  </div>
+  
+  <!-- Controles superiores -->
+  <div class="d-flex flex-fill align-items-center gap-1 mb-3">
+    <app-voice-input placeholder="Buscar..." [(ngModel)]="query" (ngModelChange)="search()" [currentLang]="selectedLang" [darkMode]="true"></app-voice-input>
+  </div>
+
+  <!-- Lista de entradas con tabla -->
+  <div class="d-flex w-100 justify-content-between align-items-center">
+    <h5 class="my-3">Entries <sup *ngIf="entries.length>0" class="ms-1">({{entries.length}})</sup></h5>
+    <div class="d-flex gap-2 pe-2">
+        <button class="btn btn-sm btn-primary" (click)="newEntry(entryModalTemplate)"><i class="fas fa-plus"></i> New entry</button>
+        <button class="btn btn-sm btn-success" (click)="export()"><i class="fas fa-file-export"></i> Export JSON</button>
+        <button class="btn btn-sm btn-light" (click)="openTableConfig(tableConfigModalTemplate)"><i class="fas fa-gear"></i></button>
+    </div>
+  </div>
+  
+  <div *ngIf="entries.length > 0" class="table-responsive">
+    <table class="table table-sm table-striped table-hover align-middle" [ngClass]="{'table-dark':darkMode()}">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th *ngIf="columns.title.visible" (click)="sort('title')" style="cursor: pointer;">Title <i *ngIf="sortBy==='title'" class="fa" [class.fa-arrow-up]="sortAsc" [class.fa-arrow-down]="!sortAsc"></i></th>
+          <th *ngIf="columns.content.visible">Content</th>
+          <th *ngIf="columns.language.visible" (click)="sort('language')" style="cursor: pointer;">Language <i *ngIf="sortBy==='language'" class="fa" [class.fa-arrow-up]="sortAsc" [class.fa-arrow-down]="!sortAsc"></i></th>
+          <th *ngIf="columns.voice.visible" (click)="sort('voice')" style="cursor: pointer;">Voice <i *ngIf="sortBy==='voice'" class="fa" [class.fa-arrow-up]="sortAsc" [class.fa-arrow-down]="!sortAsc"></i></th>
+          <th *ngIf="columns.created.visible" (click)="sort('created')" style="cursor: pointer;">Created <i *ngIf="sortBy==='created'" class="fa" [class.fa-arrow-up]="sortAsc" [class.fa-arrow-down]="!sortAsc"></i></th>
+          <th *ngIf="columns.updated.visible" (click)="sort('updated')" style="cursor: pointer;">Updated <i *ngIf="sortBy==='updated'" class="fa" [class.fa-arrow-up]="sortAsc" [class.fa-arrow-down]="!sortAsc"></i></th>
+          <th class="text-end">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of entries; let idx=index; trackBy: trackById">
+          <td>{{idx+1}}</td>
+          <td *ngIf="columns.title.visible">{{ e.title }}</td>
+          <td *ngIf="columns.content.visible" title="{{e.content}}">{{ e.content | slice:0:50 }}{{ e.content.length > 50 ? '…' : '' }}</td>
+          <td *ngIf="columns.language.visible"><span class="fi fi-{{getCountryByLanguageCode(e.language)}} me-1"></span> {{formatLanguage(e.language)}}</td>
+          <td *ngIf="columns.voice.visible">{{e.voice?e.voice:'-'}}</td>
+          <td *ngIf="columns.created.visible">{{ formatDate(e.createdAt) }}</td>
+          <td *ngIf="columns.updated.visible">{{ e.updatedAt ? formatDate(e.updatedAt) : '-' }}</td>
+          <td class="text-end">
+            <button class="btn btn-sm btn-outline-light me-1" [ngClass]="{
+              'btn-outline-light': !speaking() || (selected && e.id!==selected.id),
+              'btn-light': speaking() && selected && e.id===selected.id
+              }" (click)="togglePlayEntry(e);">
+              <i *ngIf="!speaking() || (selected && e.id!==selected.id)" class="fas fa-play"></i>
+              <i *ngIf="speaking() && selected && e.id===selected.id"  class="fas fa-stop fa-fade"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-light me-1" (click)="edit(entryModalTemplate, e)"><i class="fas fa-edit"></i></button>
+            <button class="btn btn-sm btn-outline-danger" (click)="remove(e.id)"><i class="fas fa-trash"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="entries.length === 0" class="text-center text-muted mt-3">
+    No entries yet.
+  </div>
+</div>
+
+<div class="voice-nav-widget" *ngIf="false">
+    <app-voice-nav (onTextListened)="onVoiceNav($event)" [currentLang]="selectedLang" (onLanguageChanged)="changeLanguage($event)"></app-voice-nav>
+</div>
+
+
+<!-- Editor template modal -->
+ <ng-template #entryModalTemplate let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title" style="width: calc(100% - 30px);">
+        <!-- <input class="form-control" placeholder="Título" [(ngModel)]="title" /> -->
+        <app-voice-input placeholder="Título" [(ngModel)]="title" [darkMode]="true" [inputClass]="'px-2 py-0'" [currentLang]="selectedLang"></app-voice-input>
+      </h5>
+      <button type="button" class="btn p-0 ms-3" aria-label="Cerrar" (click)="stopSpeech();modal.dismiss()">
+        <i class="fas fa-close fs-5"></i>
+      </button>
+    </div>
+
+    <div class="modal-body">
+
+        <!-- Input -->
+        <h6>Input</h6>
+        <div class="d-flex align-items-center justify-content-between gap-2 my-2 w-100">
+            <div class="d-flex">
+                <div class="d-flex align-items-center">
+                    <i class="fi fi-{{getCountryByLanguageCode(selectedLang)}} me-2"></i>
+                    <select id="langSelect" class="form-select w-auto" [disabled]="speaking()" [(ngModel)]="selectedLang" (change)="changeLanguage()">
+                        <ng-container *ngFor="let languageItem of languages">
+                            <option value="{{languageItem.code}}">{{languageItem.label}}</option>
+                        </ng-container>
+                    </select>
+                </div>
+                <button class="btn btn-sm ms-2" [ngClass]="{'btn-outline-danger':!listening(), 'btn-danger': listening()}" [disabled]="speaking()" (click)="toggleListening()">
+                    <i class="fas fa-microphone" [ngClass]="{'fa-fade': listening()}"></i> {{ listening() ? 'Detener dictado' : 'Dictar con voz' }}
+                </button>
+            </div>
+            <span *ngIf="speech.isSupported" class="text-muted">
+                Estado: <span [ngClass]="{'text-success':listening()}">{{ listening() ? 'Escuchando…' : 'Inactivo' }}</span>
+            </span>
+        </div>
+        
+        <div class="d-flex gap-2">
+            <div class="w-50 textarea-container">
+                <i class="fas fa-copy cursor-pointer" title="Copy to clipboard" (click)="copyToClipboard('source-textarea')" [ngClass]="{disabled:content.length===0}"></i>
+                <textarea #textarea1 id="source-textarea" (scroll)="syncScroll(textarea1, textarea2, $event)" class="form-control w-100" rows="20" placeholder="Escribe o dicta aquí..." [disabled]="speaking()" [(ngModel)]="content" (ngModelChange)="onTextChange($event)"></textarea>
+            </div>
+            <div class="w-50 textarea-container">
+                <i class="fas fa-copy cursor-pointer" title="Copy to clipboard" (click)="copyToClipboard('target-textarea')" [ngClass]="{disabled:contentTranslated.length===0}"></i>
+                <textarea #textarea2 id="target-textarea" (scroll)="syncScroll(textarea2, textarea1, $event)"  class="form-control w-100" rows="20" style="font-style: italic;" placeholder="" [disabled]="true" [(ngModel)]="contentTranslated"></textarea>                
+            </div>
+        </div>
+
+        <!-- Listening -->
+        <ng-container *ngIf="content.trim().length>0">
+        <h6 class="mt-4">Listening</h6>
+        <div class="d-flex align-items-center justify-content-between gap-2 my-2 w-100">
+            <div class="d-flex">
+                
+                    <div class="d-flex align-items-center">
+                        <select id="voiceSelect" [disabled]="speaking()" class="form-select w-auto" [(ngModel)]="selectedVoiceUri" (change)="changeVoice()">
+                            <ng-container *ngFor="let voiceItem of voices">
+                                <option value="{{voiceItem.voiceURI}}">{{voiceItem.name}}</option>
+                            </ng-container>
+                        </select>
+                    </div>
+                    <button class="btn btn-sm btn-outline-info ms-2" [disabled]="listening()" (click)="toggleSpeak()">
+                        <ng-container *ngIf="!speaking()"><i class="fas fa-play"></i> Listen</ng-container>
+                        <ng-container *ngIf="speaking()"><i class="fas fa-stop"></i> Stop</ng-container>
+                    </button>
+                    <button class="btn btn-sm btn-outline-info ms-2" [disabled]="listening()" *ngIf="speaking()" (click)="togglePause()">
+                        <ng-container *ngIf="!paused()"><i class="fas fa-pause"></i> Pause</ng-container>
+                        <ng-container *ngIf="paused()"><i class="fas fa-play"></i> Resume</ng-container>
+                    </button>
+                    <div class="d-flex justify-content-start align-items-center ms-4">
+                        <input [disabled]="speaking()" type="range" min="0.5" max="1" step="0.1" [(ngModel)]="voiceSpeedRate" class="form-range">
+                        <span class="text-gray ms-1">{{ voiceSpeedRate }}x</span>
+                    </div>
+                
+            </div>
+        </div>
+        </ng-container>
+
+        <div class="d-flex align-items-center my-2 w-100 p-2">
+            <span class="text-primary ms-2" *ngIf="interim">— "{{ interim }}"</span>
+        </div>
+
+        <button class="btn btn-primary w-100" [disabled]="content.trim().length===0 || speaking() || listening()" (click)="listening.set(false);save()">
+            <i class="fas fa-save"></i> Save entry
+        </button>
+    </div>
+  </ng-template>
+
+<!-- Table config template modal -->
+ <ng-template #tableConfigModalTemplate let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title" style="width: calc(100% - 30px);">
+        Show/hide columns
+      </h5>
+      <button type="button" class="btn p-0 ms-3" aria-label="Cerrar" (click)="modal.dismiss()">
+        <i class="fas fa-close fs-5"></i>
+      </button>
+    </div>
+
+    <div class="modal-body">
+        <div class="d-flex flex-column justify-content-start align-items-center gap-2">
+          
+            <div class="d-flex justify-content-start w-100">
+              <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="titleChecked" [(ngModel)]="columnsTemp.title.visible">
+                  <label class="form-check-label ms-1" for="titleChecked">Title</label>
+              </div>
+            </div>
+            <div class="d-flex justify-content-start w-100">
+              <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="contentChecked" [(ngModel)]="columnsTemp.content.visible">
+                  <label class="form-check-label ms-1" for="contentChecked">Content</label>
+              </div>
+            </div>
+            <div class="d-flex justify-content-start w-100">
+              <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="languageChecked" [(ngModel)]="columnsTemp.language.visible">
+                  <label class="form-check-label ms-1" for="languageChecked">Language</label>
+              </div>
+            </div>
+            <div class="d-flex justify-content-start w-100">
+              <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="voiceChecked" [(ngModel)]="columnsTemp.voice.visible">
+                  <label class="form-check-label ms-1" for="voiceChecked">Voice</label>
+              </div>
+            </div>
+            <div class="d-flex justify-content-start w-100">
+              <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="createdChecked" [(ngModel)]="columnsTemp.created.visible">
+                  <label class="form-check-label ms-1" for="createdChecked">Created</label>
+              </div>
+            </div>
+            <div class="d-flex justify-content-start w-100">
+              <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="updatedChecked" [(ngModel)]="columnsTemp.updated.visible">
+                  <label class="form-check-label ms-1" for="updatedChecked">Updated</label>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-sm btn-default" aria-label="Cerrar" (click)="closeTableConfig();">
+        Cancel
+      </button>
+      <button type="button" class="btn btn-sm btn-danger" aria-label="Guardar" (click)="saveTableConfig();modal.dismiss()">
+        Save
+      </button>
+    </div>
+  </ng-template>

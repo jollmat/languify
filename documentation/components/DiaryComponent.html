@@ -1,0 +1,4128 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>diario-voz documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">diario-voz documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  DiaryComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/diary/diary.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-diary</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                            <code>NgbModule</code>
+                                <code><a href="../components/VoiceNavComponent.html" target="_self" >VoiceNavComponent</a></code>
+                                <code><a href="../components/VoiceInputComponent.html" target="_self" >VoiceInputComponent</a></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./diary.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./diary.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#content" >content</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#contentSubject" >contentSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#contentSubscription" >contentSubscription</a>
+                            </li>
+                            <li>
+                                <a href="#contentTranslated" >contentTranslated</a>
+                            </li>
+                            <li>
+                                <a href="#darkMode" >darkMode</a>
+                            </li>
+                            <li>
+                                <a href="#entries" >entries</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#entryModalTempl" >entryModalTempl</a>
+                            </li>
+                            <li>
+                                <a href="#interim" >interim</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#isSyncing" >isSyncing</a>
+                            </li>
+                            <li>
+                                <a href="#language" >language</a>
+                            </li>
+                            <li>
+                                <a href="#languages" >languages</a>
+                            </li>
+                            <li>
+                                <a href="#listening" >listening</a>
+                            </li>
+                            <li>
+                                <a href="#paused" >paused</a>
+                            </li>
+                            <li>
+                                <a href="#query" >query</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#selected" >selected</a>
+                            </li>
+                            <li>
+                                <a href="#selectedLang" >selectedLang</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#selectedVoice" >selectedVoice</a>
+                            </li>
+                            <li>
+                                <a href="#selectedVoiceUri" >selectedVoiceUri</a>
+                            </li>
+                            <li>
+                                <a href="#showEditor" >showEditor</a>
+                            </li>
+                            <li>
+                                <a href="#sortAsc" >sortAsc</a>
+                            </li>
+                            <li>
+                                <a href="#sortBy" >sortBy</a>
+                            </li>
+                            <li>
+                                <a href="#speaking" >speaking</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#speech" >speech</a>
+                            </li>
+                            <li>
+                                <a href="#subs" >subs</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#textarea1" >textarea1</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#textarea2" >textarea2</a>
+                            </li>
+                            <li>
+                                <a href="#title" >title</a>
+                            </li>
+                            <li>
+                                <a href="#utterance" >utterance</a>
+                            </li>
+                            <li>
+                                <a href="#voices" >voices</a>
+                            </li>
+                            <li>
+                                <a href="#voicesAll" >voicesAll</a>
+                            </li>
+                            <li>
+                                <a href="#voiceSpeedRate" >voiceSpeedRate</a>
+                            </li>
+                            <li>
+                                <a href="#words" >words</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#changeLanguage" >changeLanguage</a>
+                            </li>
+                            <li>
+                                <a href="#changeVoice" >changeVoice</a>
+                            </li>
+                            <li>
+                                <a href="#cleanEntrySelection" >cleanEntrySelection</a>
+                            </li>
+                            <li>
+                                <a href="#copyToClipboard" >copyToClipboard</a>
+                            </li>
+                            <li>
+                                <a href="#edit" >edit</a>
+                            </li>
+                            <li>
+                                <a href="#export" >export</a>
+                            </li>
+                            <li>
+                                <a href="#focusContent" >focusContent</a>
+                            </li>
+                            <li>
+                                <a href="#formatDate" >formatDate</a>
+                            </li>
+                            <li>
+                                <a href="#formatLanguage" >formatLanguage</a>
+                            </li>
+                            <li>
+                                <a href="#getCountryByLanguageCode" >getCountryByLanguageCode</a>
+                            </li>
+                            <li>
+                                <a href="#getLanguageByLanguageCode" >getLanguageByLanguageCode</a>
+                            </li>
+                            <li>
+                                <a href="#importFile" >importFile</a>
+                            </li>
+                            <li>
+                                <a href="#importFileEvent" >importFileEvent</a>
+                            </li>
+                            <li>
+                                <a href="#loadVoices" >loadVoices</a>
+                            </li>
+                            <li>
+                                <a href="#newEntry" >newEntry</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onTextChange" >onTextChange</a>
+                            </li>
+                            <li>
+                                <a href="#onVoiceNav" >onVoiceNav</a>
+                            </li>
+                            <li>
+                                <a href="#refresh" >refresh</a>
+                            </li>
+                            <li>
+                                <a href="#refreshSorted" >refreshSorted</a>
+                            </li>
+                            <li>
+                                <a href="#remove" >remove</a>
+                            </li>
+                            <li>
+                                <a href="#save" >save</a>
+                            </li>
+                            <li>
+                                <a href="#search" >search</a>
+                            </li>
+                            <li>
+                                <a href="#sort" >sort</a>
+                            </li>
+                            <li>
+                                <a href="#stopSpeech" >stopSpeech</a>
+                            </li>
+                            <li>
+                                <a href="#syncScroll" >syncScroll</a>
+                            </li>
+                            <li>
+                                <a href="#toggleDarkMode" >toggleDarkMode</a>
+                            </li>
+                            <li>
+                                <a href="#toggleListening" >toggleListening</a>
+                            </li>
+                            <li>
+                                <a href="#togglePause" >togglePause</a>
+                            </li>
+                            <li>
+                                <a href="#toggleSpeak" >toggleSpeak</a>
+                            </li>
+                            <li>
+                                <a href="#trackById" >trackById</a>
+                            </li>
+                            <li>
+                                <a href="#translate" >translate</a>
+                            </li>
+                            <li>
+                                <a href="#updateVoicesByLanguage" >updateVoicesByLanguage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(diary: <a href="../injectables/DiaryService.html" target="_self">DiaryService</a>, speech: <a href="../injectables/SpeechService.html" target="_self">SpeechService</a>, modalService: NgbModal, translationService: <a href="../injectables/TranslationService.html" target="_self">TranslationService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/components/diary/diary.component.ts:58</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>diary</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/DiaryService.html" target="_self" >DiaryService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>speech</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SpeechService.html" target="_self" >SpeechService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>modalService</td>
+                                                  
+                                                        <td>
+                                                                    <code>NgbModal</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>translationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TranslationService.html" target="_self" >TranslationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeLanguage"></a>
+                    <span class="name">
+                        <span ><b>changeLanguage</b></span>
+                        <a href="#changeLanguage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changeLanguage(language?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="222"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:222</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>language</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeVoice"></a>
+                    <span class="name">
+                        <span ><b>changeVoice</b></span>
+                        <a href="#changeVoice"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changeVoice()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="321"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:321</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cleanEntrySelection"></a>
+                    <span class="name">
+                        <span ><b>cleanEntrySelection</b></span>
+                        <a href="#cleanEntrySelection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cleanEntrySelection()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="97"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:97</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="copyToClipboard"></a>
+                    <span class="name">
+                        <span ><b>copyToClipboard</b></span>
+                        <a href="#copyToClipboard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>copyToClipboard(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="363"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:363</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="edit"></a>
+                    <span class="name">
+                        <span ><b>edit</b></span>
+                        <a href="#edit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>edit(templateRef: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, e: <a href="../interfaces/Entry.html" target="_self">Entry</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="144"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:144</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>templateRef</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>e</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Entry.html" target="_self" >Entry</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="export"></a>
+                    <span class="name">
+                        <span ><b>export</b></span>
+                        <a href="#export"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>export()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="175"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:175</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="focusContent"></a>
+                    <span class="name">
+                        <span ><b>focusContent</b></span>
+                        <a href="#focusContent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>focusContent()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="245"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:245</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatDate"></a>
+                    <span class="name">
+                        <span ><b>formatDate</b></span>
+                        <a href="#formatDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatDate(dateStr: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="198"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:198</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>dateStr</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatLanguage"></a>
+                    <span class="name">
+                        <span ><b>formatLanguage</b></span>
+                        <a href="#formatLanguage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatLanguage(code: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="208"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:208</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>code</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCountryByLanguageCode"></a>
+                    <span class="name">
+                        <span ><b>getCountryByLanguageCode</b></span>
+                        <a href="#getCountryByLanguageCode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCountryByLanguageCode(languageCode: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="212"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:212</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>languageCode</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getLanguageByLanguageCode"></a>
+                    <span class="name">
+                        <span ><b>getLanguageByLanguageCode</b></span>
+                        <a href="#getLanguageByLanguageCode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getLanguageByLanguageCode(languageCode: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="217"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:217</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>languageCode</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="importFile"></a>
+                    <span class="name">
+                        <span ><b>importFile</b></span>
+                        <a href="#importFile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>importFile(file: File | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="183"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:183</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>file</td>
+                                            <td>
+                                                        <code>File | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="importFileEvent"></a>
+                    <span class="name">
+                        <span ><b>importFileEvent</b></span>
+                        <a href="#importFileEvent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>importFileEvent(event: Event)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="192"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:192</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>Event</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadVoices"></a>
+                    <span class="name">
+                        <span ><b>loadVoices</b></span>
+                        <a href="#loadVoices"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadVoices()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="325"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:325</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="newEntry"></a>
+                    <span class="name">
+                        <span ><b>newEntry</b></span>
+                        <a href="#newEntry"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>newEntry(templateRef: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="111"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:111</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>templateRef</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onTextChange"></a>
+                    <span class="name">
+                        <span ><b>onTextChange</b></span>
+                        <a href="#onTextChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onTextChange(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onVoiceNav"></a>
+                    <span class="name">
+                        <span ><b>onVoiceNav</b></span>
+                        <a href="#onVoiceNav"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onVoiceNav(voiceNavOrder: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="377"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:377</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>voiceNavOrder</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="refresh"></a>
+                    <span class="name">
+                        <span ><b>refresh</b></span>
+                        <a href="#refresh"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>refresh()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="85"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:85</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="refreshSorted"></a>
+                    <span class="name">
+                        <span ><b>refreshSorted</b></span>
+                        <a href="#refreshSorted"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>refreshSorted()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="343"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:343</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="remove"></a>
+                    <span class="name">
+                        <span ><b>remove</b></span>
+                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="167"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:167</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="save"></a>
+                    <span class="name">
+                        <span ><b>save</b></span>
+                        <a href="#save"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>save()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="120"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:120</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="search"></a>
+                    <span class="name">
+                        <span ><b>search</b></span>
+                        <a href="#search"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>search()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="174"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:174</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sort"></a>
+                    <span class="name">
+                        <span ><b>sort</b></span>
+                        <a href="#sort"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>sort(by: "created" | "updated" | "language" | "title" | string)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="333"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:333</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>by</td>
+                                            <td>
+                                                        <code>&quot;created&quot; | &quot;updated&quot; | &quot;language&quot; | &quot;title&quot; | string</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="stopSpeech"></a>
+                    <span class="name">
+                        <span ><b>stopSpeech</b></span>
+                        <a href="#stopSpeech"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>stopSpeech()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="106"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:106</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="syncScroll"></a>
+                    <span class="name">
+                        <span ><b>syncScroll</b></span>
+                        <a href="#syncScroll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>syncScroll(source: HTMLTextAreaElement, target: HTMLTextAreaElement, event: Event)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="353"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:353</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>source</td>
+                                            <td>
+                                                        <code>HTMLTextAreaElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>target</td>
+                                            <td>
+                                                        <code>HTMLTextAreaElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>Event</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleDarkMode"></a>
+                    <span class="name">
+                        <span ><b>toggleDarkMode</b></span>
+                        <a href="#toggleDarkMode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleDarkMode()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="229"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:229</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleListening"></a>
+                    <span class="name">
+                        <span ><b>toggleListening</b></span>
+                        <a href="#toggleListening"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleListening()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="168"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:168</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="togglePause"></a>
+                    <span class="name">
+                        <span ><b>togglePause</b></span>
+                        <a href="#togglePause"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>togglePause()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="236"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:236</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleSpeak"></a>
+                    <span class="name">
+                        <span ><b>toggleSpeak</b></span>
+                        <a href="#toggleSpeak"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleSpeak()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="253"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:253</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="trackById"></a>
+                    <span class="name">
+                        <span ><b>trackById</b></span>
+                        <a href="#trackById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>trackById(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, item: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="347"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:347</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>item</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="translate"></a>
+                    <span class="name">
+                        <span ><b>translate</b></span>
+                        <a href="#translate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>translate()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="129"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateVoicesByLanguage"></a>
+                    <span class="name">
+                        <span ><b>updateVoicesByLanguage</b></span>
+                        <a href="#updateVoicesByLanguage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateVoicesByLanguage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="308"
+                                    class="link-to-prism">src/app/components/diary/diary.component.ts:308</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="content"></a>
+                    <span class="name">
+                        <span ><b>content</b></span>
+                        <a href="#content"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/components/diary/diary.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="contentSubject"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>contentSubject</b></span>
+                        <a href="#contentSubject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;string&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/diary/diary.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="contentSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>contentSubscription</b></span>
+                        <a href="#contentSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/components/diary/diary.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="contentTranslated"></a>
+                    <span class="name">
+                        <span ><b>contentTranslated</b></span>
+                        <a href="#contentTranslated"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/components/diary/diary.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="darkMode"></a>
+                    <span class="name">
+                        <span ><b>darkMode</b></span>
+                        <a href="#darkMode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(true)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/components/diary/diary.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="entries"></a>
+                    <span class="name">
+                        <span ><b>entries</b></span>
+                        <a href="#entries"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Entry.html" target="_self" >Entry[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/diary/diary.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="entryModalTempl"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>entryModalTempl</b></span>
+                        <a href="#entryModalTempl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;entryModalTemplate&#x27;, {static: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/components/diary/diary.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="interim"></a>
+                    <span class="name">
+                        <span ><b>interim</b></span>
+                        <a href="#interim"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/components/diary/diary.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSyncing"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>isSyncing</b></span>
+                        <a href="#isSyncing"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="351" class="link-to-prism">src/app/components/diary/diary.component.ts:351</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="language"></a>
+                    <span class="name">
+                        <span ><b>language</b></span>
+                        <a href="#language"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.selectedLang</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/components/diary/diary.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="languages"></a>
+                    <span class="name">
+                        <span ><b>languages</b></span>
+                        <a href="#languages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/components/diary/diary.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="listening"></a>
+                    <span class="name">
+                        <span ><b>listening</b></span>
+                        <a href="#listening"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/components/diary/diary.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paused"></a>
+                    <span class="name">
+                        <span ><b>paused</b></span>
+                        <a href="#paused"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/components/diary/diary.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="query"></a>
+                    <span class="name">
+                        <span ><b>query</b></span>
+                        <a href="#query"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/components/diary/diary.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selected"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>selected</b></span>
+                        <a href="#selected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Entry.html" target="_self" >Entry</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/diary/diary.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedLang"></a>
+                    <span class="name">
+                        <span ><b>selectedLang</b></span>
+                        <a href="#selectedLang"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;es-ES&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/components/diary/diary.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedVoice"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>selectedVoice</b></span>
+                        <a href="#selectedVoice"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>SpeechSynthesisVoice</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>undefined</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/components/diary/diary.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedVoiceUri"></a>
+                    <span class="name">
+                        <span ><b>selectedVoiceUri</b></span>
+                        <a href="#selectedVoiceUri"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/components/diary/diary.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showEditor"></a>
+                    <span class="name">
+                        <span ><b>showEditor</b></span>
+                        <a href="#showEditor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/diary/diary.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sortAsc"></a>
+                    <span class="name">
+                        <span ><b>sortAsc</b></span>
+                        <a href="#sortAsc"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/components/diary/diary.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sortBy"></a>
+                    <span class="name">
+                        <span ><b>sortBy</b></span>
+                        <a href="#sortBy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;created&quot; | &quot;updated&quot; | &quot;language&quot; | &quot;title&quot; | any</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;created&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/components/diary/diary.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="speaking"></a>
+                    <span class="name">
+                        <span ><b>speaking</b></span>
+                        <a href="#speaking"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/diary/diary.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="speech"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>speech</b></span>
+                        <a href="#speech"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/SpeechService.html" target="_self" >SpeechService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/components/diary/diary.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="subs"></a>
+                    <span class="name">
+                        <span ><b>subs</b></span>
+                        <a href="#subs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/components/diary/diary.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="textarea1"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>textarea1</b></span>
+                        <a href="#textarea1"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef&lt;HTMLTextAreaElement&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;text1&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/diary/diary.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="textarea2"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>textarea2</b></span>
+                        <a href="#textarea2"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef&lt;HTMLTextAreaElement&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;text2&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/diary/diary.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="title"></a>
+                    <span class="name">
+                        <span ><b>title</b></span>
+                        <a href="#title"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/diary/diary.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="utterance"></a>
+                    <span class="name">
+                        <span ><b>utterance</b></span>
+                        <a href="#utterance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>SpeechSynthesisUtterance</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="252" class="link-to-prism">src/app/components/diary/diary.component.ts:252</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="voices"></a>
+                    <span class="name">
+                        <span ><b>voices</b></span>
+                        <a href="#voices"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>SpeechSynthesisVoice[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/components/diary/diary.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="voicesAll"></a>
+                    <span class="name">
+                        <span ><b>voicesAll</b></span>
+                        <a href="#voicesAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>SpeechSynthesisVoice[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/components/diary/diary.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="voiceSpeedRate"></a>
+                    <span class="name">
+                        <span ><b>voiceSpeedRate</b></span>
+                        <a href="#voiceSpeedRate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/components/diary/diary.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="words"></a>
+                    <span class="name">
+                        <span ><b>words</b></span>
+                        <a href="#words"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/components/diary/diary.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, OnDestroy, signal, ViewChild, ElementRef, TemplateRef } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { NgbModal, NgbModule } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { DiaryService } from &#x27;../../services/diary.service&#x27;;
+import { SpeechService } from &#x27;../../services/speech.service&#x27;;
+import { debounceTime, Subject, Subscription } from &#x27;rxjs&#x27;;
+import { Entry } from &#x27;../../model/interfaces/entry.interface&#x27;;
+import { TranslationService } from &#x27;../../services/translation.service&#x27;;
+import { VoiceNavComponent } from &quot;../voice-nav/voice-nav.component&quot;;
+import { VoiceInputComponent } from &#x27;../voice-input/voice-input.component&#x27;;
+
+@Component({
+  selector: &#x27;app-diary&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, NgbModule, VoiceNavComponent, VoiceInputComponent],
+  templateUrl: &#x27;./diary.component.html&#x27;,
+  styleUrls: [&#x27;./diary.component.scss&#x27;]
+})
+export class DiaryComponent implements OnInit, OnDestroy {
+
+  @ViewChild(&#x27;text1&#x27;) textarea1!: ElementRef&lt;HTMLTextAreaElement&gt;;
+  @ViewChild(&#x27;text2&#x27;) textarea2!: ElementRef&lt;HTMLTextAreaElement&gt;;
+
+  @ViewChild(&#x27;entryModalTemplate&#x27;, { static: true }) entryModalTempl!: TemplateRef&lt;any&gt;;
+
+  selectedLang &#x3D; &#x27;es-ES&#x27;;
+  showEditor &#x3D; signal(false); 
+  darkMode &#x3D; signal(true);
+
+  entries: Entry[] &#x3D; [];
+  selected?: Entry;
+  title &#x3D; &#x27;&#x27;;
+  content &#x3D; &#x27;&#x27;;
+  contentTranslated &#x3D; &#x27;&#x27;;
+  language &#x3D; this.selectedLang;
+  query &#x3D; &#x27;&#x27;;
+  listening &#x3D; signal(false);
+  speaking &#x3D; signal(false);
+  paused &#x3D; signal(false);
+  interim &#x3D; &#x27;&#x27;;
+  subs: Subscription[] &#x3D; [];
+
+  private contentSubject &#x3D; new Subject&lt;string&gt;();
+  private contentSubscription!: Subscription;
+
+  voiceSpeedRate &#x3D; 1;
+  selectedVoiceUri &#x3D; &#x27;&#x27;;
+  selectedVoice?: SpeechSynthesisVoice &#x3D; undefined;
+  voicesAll: SpeechSynthesisVoice[] &#x3D; [];
+  voices: SpeechSynthesisVoice[] &#x3D; [];
+
+  words: string[] &#x3D; [];
+
+  sortBy: &#x27;created&#x27; | &#x27;updated&#x27; | &#x27;language&#x27; | &#x27;title&#x27; | any &#x3D; &#x27;created&#x27;;
+  sortAsc &#x3D; false;
+
+  languages: {code: string, label: string}[] &#x3D; [];
+
+  constructor(private diary: DiaryService, public speech: SpeechService, private modalService: NgbModal, private translationService: TranslationService) {
+    this.languages &#x3D; this.speech.getLanguages();
+    this.loadVoices();
+    // Algunos navegadores requieren este evento
+    window.speechSynthesis.onvoiceschanged &#x3D; () &#x3D;&gt; this.loadVoices();
+  }
+
+  ngOnInit() {
+    this.refresh();
+    if (this.speech.isSupported) {
+      this.subs.push(this.speech.onInterim().subscribe(t &#x3D;&gt; this.interim &#x3D; t));
+      this.subs.push(this.speech.onFinal().subscribe(t &#x3D;&gt; this.content +&#x3D; (this.content ? &#x27; &#x27; : &#x27;&#x27;) + t));
+
+      this.subs.push(this.contentSubject.pipe(debounceTime(500)).subscribe(value &#x3D;&gt; {
+        this.content &#x3D; value;
+        this.translate();
+      }));
+    }
+  }
+
+  ngOnDestroy() { 
+    this.subs.forEach(s &#x3D;&gt; s.unsubscribe()); 
+    this.stopSpeech();
+  }
+
+  refresh() { 
+    this.stopSpeech();
+    this.entries &#x3D; this.diary.list(); 
+
+    if (this.darkMode()) document.body.classList.add(&#x27;dark-mode&#x27;);
+    else document.body.classList.remove(&#x27;dark-mode&#x27;);
+  }
+
+  onTextChange(value: string) {
+    this.contentSubject.next(value);
+  }
+
+  cleanEntrySelection() {
+    this.stopSpeech();
+    this.contentTranslated &#x3D; &#x27;&#x27;;
+    this.selected &#x3D; undefined; 
+    this.title &#x3D; &#x27;&#x27;; 
+    this.content &#x3D; &#x27;&#x27;;
+    this.language &#x3D; this.selectedLang;
+  }
+
+  stopSpeech() {
+    this.speaking.set(false);
+    window.speechSynthesis.cancel();
+  }
+
+  newEntry(templateRef: any) { 
+    this.cleanEntrySelection();
+    this.showEditor.set(true);
+    this.modalService.open(templateRef, { 
+      centered: false, 
+      size: &#x27;lg&#x27;,
+      windowClass: this.darkMode() ? &#x27;dark-modal&#x27; : &#x27;dark-modal&#x27;
+    });
+  }
+  save() {
+    this.modalService.dismissAll();
+    if (!this.title &amp;&amp; !this.content) return;
+    if (this.selected) this.diary.update(this.selected.id, { title: this.title, content: this.content, language: this.selectedLang });
+    else this.diary.create(this.title || new Date().toLocaleString(), this.content, this.selectedLang);
+    this.cleanEntrySelection(); 
+    this.refresh();
+  }
+
+  translate() {
+    this.translationService.translate(this.content, this.getLanguageByLanguageCode(this.selectedLang), &#x27;es&#x27;).subscribe({
+      next: (res) &#x3D;&gt; {
+        this.contentTranslated &#x3D; res;
+      },
+      error: (e) &#x3D;&gt; {
+        if (this.getLanguageByLanguageCode(this.language)&#x3D;&#x3D;&#x3D;&#x27;es&#x27;) {
+          this.contentTranslated &#x3D; this.content;
+        } else {
+          this.contentTranslated &#x3D; &#x27;Error on translating text&#x27;;
+        }
+      }
+    });
+  }
+
+  edit(templateRef: any, e: Entry) { 
+
+    this.speaking.set(false);
+    this.stopSpeech();
+
+    this.selected &#x3D; e; 
+    this.title &#x3D; e.title; 
+    this.content &#x3D; e.content; 
+    this.language &#x3D; e.language;
+    this.selectedLang &#x3D; e.language;
+    this.updateVoicesByLanguage();
+    this.showEditor.set(true);
+
+    this.contentTranslated &#x3D; &#x27;Traduciendo...&#x27;;
+
+    this.translate();
+
+    this.modalService.open(templateRef, { 
+      centered: true, 
+      size: &#x27;lg&#x27;,
+      windowClass: this.darkMode() ? &#x27;dark-modal&#x27; : &#x27;dark-modal&#x27;
+    });
+  }
+  remove(id: string) { this.diary.delete(id); this.refresh(); }
+  toggleListening() { 
+    if (!this.speech.isSupported) return alert(&#x27;Reconocimiento de voz no soportado.&#x27;);
+    this.listening() ? this.speech.stop() : this.speech.start();
+    this.listening.set(!this.listening()); 
+    this.interim &#x3D; &#x27;&#x27;;
+  }
+  search() { console.log(&#x27;search()&#x27;, this.query); this.entries &#x3D; this.diary.search(this.query); }
+  export() {
+    const data &#x3D; this.diary.exportJSON();
+    const blob &#x3D; new Blob([data], { type: &#x27;application/json&#x27; });
+    const a &#x3D; document.createElement(&#x27;a&#x27;);
+    a.href &#x3D; URL.createObjectURL(blob);
+    a.download &#x3D; &#x60;diario-${new Date().toISOString()}.json&#x60;;
+    a.click();
+  }
+  importFile(file: File | null) {
+    if (!file) return;
+    const reader &#x3D; new FileReader();
+    reader.onload &#x3D; () &#x3D;&gt; {
+      try { this.diary.importJSON(String(reader.result)); this.refresh(); alert(&#x27;Importación completa&#x27;); }
+      catch(err) { alert(&#x27;Error importando: &#x27; + (err as any).message); }
+    };
+    reader.readAsText(file);
+  }
+  importFileEvent(event: Event) {
+    const input &#x3D; event.target as HTMLInputElement;
+    const file &#x3D; input.files?.[0] ?? null;
+    this.importFile(file);
+  }
+
+  formatDate(dateStr: string): string {
+    const d &#x3D; new Date(dateStr);
+    const day &#x3D; String(d.getDate()).padStart(2, &#x27;0&#x27;);
+    const month &#x3D; String(d.getMonth() + 1).padStart(2, &#x27;0&#x27;); // Mes de 0 a 11
+    const year &#x3D; String(d.getFullYear()).padStart(4, &#x27;0&#x27;);
+    const hour &#x3D; String(d.getHours()).padStart(2, &#x27;0&#x27;);
+    const min &#x3D; String(d.getMinutes()).padStart(2, &#x27;0&#x27;);
+    return &#x60;${day}.${month}.${year} - ${hour}:${min}h&#x60;;
+  }
+
+  formatLanguage(code: string): string {
+    return this.languages.find((_langItem) &#x3D;&gt; _langItem.code&#x3D;&#x3D;&#x3D;code)?.label || &#x60;${code}?&#x60;;
+  }
+
+  getCountryByLanguageCode(languageCode: string): string {
+    const parts &#x3D; languageCode.split(&#x27;-&#x27;);
+    return parts.length &#x3D;&#x3D;&#x3D; 2 ? parts[1].toLowerCase() : &#x27;&#x27;;
+  }
+
+  getLanguageByLanguageCode(languageCode: string): string {
+    const parts &#x3D; languageCode.split(&#x27;-&#x27;);
+    return parts.length &#x3D;&#x3D;&#x3D; 2 ? parts[0].toLowerCase() : &#x27;&#x27;;
+  }
+
+  changeLanguage(language?: string) {
+    console.log(&#x27;changeLanguage()&#x27;, language);
+    this.speech.setLanguage(language || this.selectedLang);
+    this.selectedLang &#x3D; language || this.selectedLang;
+    this.updateVoicesByLanguage();
+  }
+
+  toggleDarkMode() {
+    this.darkMode.set(!this.darkMode());
+
+    if (this.darkMode()) document.body.classList.add(&#x27;dark-mode&#x27;);
+    else document.body.classList.remove(&#x27;dark-mode&#x27;);
+  }
+
+  togglePause() {
+    this.paused.set(!this.paused());
+    if (this.paused()) {
+      window.speechSynthesis.pause();
+    } else {
+      window.speechSynthesis.resume();
+    }
+  }
+
+  focusContent() {
+    const sourceTextarea: HTMLTextAreaElement | null &#x3D; document.querySelector&lt;HTMLTextAreaElement&gt;(&#x27;#source-textarea&#x27;);
+    if (sourceTextarea) {
+      sourceTextarea.focus();
+    }
+  }
+
+  utterance!: SpeechSynthesisUtterance;
+  toggleSpeak() {
+    this.speaking.set(!this.speaking());
+
+    if (this.speaking()) {
+      if (!this.content) return;
+
+      const sourceTextarea: HTMLTextAreaElement | null &#x3D; document.querySelector&lt;HTMLTextAreaElement&gt;(&#x27;#source-textarea&#x27;);
+
+      let selectedText &#x3D; &#x27;&#x27;;
+      if (sourceTextarea) {
+        selectedText &#x3D; sourceTextarea.value.substring(sourceTextarea.selectionStart, sourceTextarea.selectionEnd);
+      }
+      
+      this.paused.set(false);
+
+      this.words &#x3D; this.content.split(/(\s+)/); 
+
+      this.utterance &#x3D; new SpeechSynthesisUtterance(selectedText.length&gt;0?selectedText:this.content);
+      this.utterance.voice &#x3D; this.selectedVoice || null;
+      this.utterance.rate &#x3D; this.voiceSpeedRate;
+      this.utterance.pitch &#x3D; 1;   // tono
+
+      // Palabra a palabra
+      this.utterance.onboundary &#x3D; (event: any) &#x3D;&gt; {
+        // console.log(&#x27;utterance.onboundary()&#x27;);
+      };
+
+      // Cuando termina la pronunciación
+      this.utterance.onend &#x3D; () &#x3D;&gt; {
+        console.log(&#x27;utterance.onend()&#x27;);
+        this.speaking.set(false);
+        setTimeout(() &#x3D;&gt; {
+          this.focusContent()
+        },200);
+      };
+
+      this.utterance.onpause &#x3D; () &#x3D;&gt; {
+        console.log(&#x27;utterance.onpause()&#x27;);
+        setTimeout(() &#x3D;&gt; {
+          this.focusContent()
+        },200);
+      };
+
+      // Cuando inicia la pronunciación
+      this.utterance.onstart &#x3D; () &#x3D;&gt; {
+        console.log(&#x27;utterance.onstart()&#x27;);
+      };
+
+      window.speechSynthesis.speak(this.utterance);
+      
+    } else {
+      this.stopSpeech();
+    }
+  }
+
+  updateVoicesByLanguage() {
+    this.voices &#x3D; this.voicesAll.filter((_voice) &#x3D;&gt; {
+      return _voice.lang&#x3D;&#x3D;&#x3D;this.selectedLang;
+    });
+    if(this.voices.length&gt;0) {
+      let googleVoice: SpeechSynthesisVoice | undefined &#x3D; this.voices.find((_voice) &#x3D;&gt; _voice.name.startsWith(&#x27;Google&#x27;));
+      if (!googleVoice) {
+        googleVoice &#x3D; this.voices.find((_voice) &#x3D;&gt; !_voice.name.includes(&#x27;(&#x27;));
+      }
+      this.selectedVoice &#x3D; googleVoice || this.voices[0];
+      this.selectedVoiceUri &#x3D; this.selectedVoice.voiceURI;
+    }
+  }
+  changeVoice() {
+    this.selectedVoice &#x3D; this.voices.find((_voiceItem) &#x3D;&gt; _voiceItem.voiceURI&#x3D;&#x3D;&#x3D;this.selectedVoiceUri);
+  }
+
+  loadVoices() {
+    this.voicesAll &#x3D; window.speechSynthesis.getVoices();
+    if (this.voicesAll.length &gt; 0 &amp;&amp; !this.selectedVoice) {
+      this.updateVoicesByLanguage();
+      this.selectedVoice &#x3D; this.voices[0];
+    }
+  }
+
+  sort(by: &#x27;created&#x27; | &#x27;updated&#x27; | &#x27;language&#x27; | &#x27;title&#x27; | string) {
+    if (this.sortBy &#x3D;&#x3D;&#x3D; by) {
+      this.sortAsc &#x3D; !this.sortAsc; // alterna asc/desc
+    } else {
+      this.sortBy &#x3D; by;
+      this.sortAsc &#x3D; true;
+    }
+    this.refreshSorted();
+  }
+
+  refreshSorted() {
+    this.entries &#x3D; this.diary.getSorted(this.sortBy, this.sortAsc, this.languages);
+  }
+
+  trackById(index: number, item: any): number {
+    return item.id;
+  }
+
+  private isSyncing &#x3D; false;
+  // syncScroll receives the source and target textareas as template references
+  syncScroll(source: HTMLTextAreaElement, target: HTMLTextAreaElement, event: Event) {
+    if (this.isSyncing) return;
+    this.isSyncing &#x3D; true;
+
+    target.scrollTop &#x3D; source.scrollTop;
+    target.scrollLeft &#x3D; source.scrollLeft; // optional
+
+    setTimeout(() &#x3D;&gt; (this.isSyncing &#x3D; false), 0);
+  }
+
+  copyToClipboard(id: string) {
+    const textarea &#x3D; document.getElementById(id) as HTMLTextAreaElement | null;
+    if (!textarea) {
+      console.error(&#x60;❌ Textarea with id &quot;${id}&quot; not found.&#x60;);
+      return;
+    }
+
+    const text &#x3D; textarea.value;
+
+    navigator.clipboard.writeText(text)
+      .then(() &#x3D;&gt; console.log(&#x27;✅ Copied to clipboard!&#x27;))
+      .catch(err &#x3D;&gt; console.error(&#x27;❌ Failed to copy:&#x27;, err));
+  }
+
+  onVoiceNav(voiceNavOrder: string) {
+    console.log(&#x27;onVoiceNav()&#x27;, voiceNavOrder);
+
+    if (voiceNavOrder.startsWith(&#x27;sort by &#x27;) || voiceNavOrder.startsWith(&#x27;order by &#x27;)) {
+      this.sort(voiceNavOrder.replace(&#x27;sort by &#x27;,&#x27;&#x27;).replace(&#x27;order by &#x27;,&#x27;&#x27;).trim());
+    } else if (voiceNavOrder.startsWith(&#x27;create&#x27;)) {
+      this.newEntry(this.entryModalTempl);
+    } else if (voiceNavOrder.startsWith(&#x27;export&#x27;)) {
+      this.export();
+    }
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container p-2 w-100 h-100&quot; [ngClass]&#x3D;&quot;{&#x27;dark-mode&#x27;:darkMode()}&quot;&gt;
+
+  &lt;div class&#x3D;&quot;d-flex justify-content-between align-items-center w-100&quot;&gt;
+    &lt;h1 class&#x3D;&quot;mb-4 text-center&quot;&gt;
+        Languify
+    &lt;/h1&gt;
+    &lt;!--
+    &lt;button class&#x3D;&quot;btn btn-sm btn-outline-secondary mb-3&quot; (click)&#x3D;&quot;toggleDarkMode()&quot;&gt;
+        &lt;i class&#x3D;&quot;fas&quot; [ngClass]&#x3D;&quot;darkMode() ? &#x27;fa-sun&#x27; : &#x27;fa-moon&#x27;&quot;&gt;&lt;/i&gt;
+        {{ darkMode() ? &#x27;Modo Claro&#x27; : &#x27;Modo Oscuro&#x27; }}
+    &lt;/button&gt;
+    --&gt;
+    &lt;div class&#x3D;&quot;d-flex align-items-center&quot;&gt;
+        &lt;input #fileInput type&#x3D;&quot;file&quot; style&#x3D;&quot;width: auto;&quot; class&#x3D;&quot;form-control m-0&quot; (change)&#x3D;&quot;importFileEvent($event)&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- Controles superiores --&gt;
+  &lt;div class&#x3D;&quot;d-flex flex-fill align-items-center gap-1 mb-3&quot;&gt;
+    &lt;app-voice-input placeholder&#x3D;&quot;Buscar...&quot; [(ngModel)]&#x3D;&quot;query&quot; (ngModelChange)&#x3D;&quot;search()&quot; [currentLang]&#x3D;&quot;selectedLang&quot; [darkMode]&#x3D;&quot;true&quot;&gt;&lt;/app-voice-input&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Lista de entradas con tabla --&gt;
+  &lt;div class&#x3D;&quot;d-flex w-100 justify-content-between align-items-center&quot;&gt;
+    &lt;h5 class&#x3D;&quot;my-3&quot;&gt;Entradas&lt;/h5&gt;
+    &lt;div class&#x3D;&quot;d-flex gap-2&quot;&gt;
+        &lt;button class&#x3D;&quot;btn btn-sm btn-primary&quot; (click)&#x3D;&quot;newEntry(entryModalTemplate)&quot;&gt;&lt;i class&#x3D;&quot;fas fa-plus&quot;&gt;&lt;/i&gt; Nueva entrada&lt;/button&gt;
+        &lt;button class&#x3D;&quot;btn btn-sm btn-success&quot; (click)&#x3D;&quot;export()&quot;&gt;&lt;i class&#x3D;&quot;fas fa-file-export&quot;&gt;&lt;/i&gt; Exportar JSON&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div *ngIf&#x3D;&quot;entries.length &gt; 0&quot; class&#x3D;&quot;table-responsive&quot;&gt;
+    &lt;table class&#x3D;&quot;table table-sm table-striped table-hover align-middle&quot; [ngClass]&#x3D;&quot;{&#x27;table-dark&#x27;:darkMode()}&quot;&gt;
+      &lt;thead class&#x3D;&quot;table-dark&quot;&gt;
+        &lt;tr&gt;
+          &lt;th&gt;#&lt;/th&gt;
+          &lt;th (click)&#x3D;&quot;sort(&#x27;title&#x27;)&quot; style&#x3D;&quot;cursor: pointer;&quot;&gt;Título &lt;i *ngIf&#x3D;&quot;sortBy&#x3D;&#x3D;&#x3D;&#x27;title&#x27;&quot; class&#x3D;&quot;fa&quot; [class.fa-arrow-up]&#x3D;&quot;sortAsc&quot; [class.fa-arrow-down]&#x3D;&quot;!sortAsc&quot;&gt;&lt;/i&gt;&lt;/th&gt;
+          &lt;th&gt;Contenido&lt;/th&gt;
+          &lt;th (click)&#x3D;&quot;sort(&#x27;language&#x27;)&quot; style&#x3D;&quot;cursor: pointer;&quot;&gt;Idioma &lt;i *ngIf&#x3D;&quot;sortBy&#x3D;&#x3D;&#x3D;&#x27;language&#x27;&quot; class&#x3D;&quot;fa&quot; [class.fa-arrow-up]&#x3D;&quot;sortAsc&quot; [class.fa-arrow-down]&#x3D;&quot;!sortAsc&quot;&gt;&lt;/i&gt;&lt;/th&gt;
+          &lt;th (click)&#x3D;&quot;sort(&#x27;created&#x27;)&quot; style&#x3D;&quot;cursor: pointer;&quot;&gt;Creado &lt;i *ngIf&#x3D;&quot;sortBy&#x3D;&#x3D;&#x3D;&#x27;created&#x27;&quot; class&#x3D;&quot;fa&quot; [class.fa-arrow-up]&#x3D;&quot;sortAsc&quot; [class.fa-arrow-down]&#x3D;&quot;!sortAsc&quot;&gt;&lt;/i&gt;&lt;/th&gt;
+          &lt;th (click)&#x3D;&quot;sort(&#x27;updated&#x27;)&quot; style&#x3D;&quot;cursor: pointer;&quot;&gt;Actualizado &lt;i *ngIf&#x3D;&quot;sortBy&#x3D;&#x3D;&#x3D;&#x27;updated&#x27;&quot; class&#x3D;&quot;fa&quot; [class.fa-arrow-up]&#x3D;&quot;sortAsc&quot; [class.fa-arrow-down]&#x3D;&quot;!sortAsc&quot;&gt;&lt;/i&gt;&lt;/th&gt;
+          &lt;th&gt;Acciones&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr *ngFor&#x3D;&quot;let e of entries; let idx&#x3D;index; trackBy: trackById&quot;&gt;
+          &lt;td&gt;{{idx+1}}&lt;/td&gt;
+          &lt;td&gt;{{ e.title }}&lt;/td&gt;
+          &lt;td title&#x3D;&quot;{{e.content}}&quot;&gt;{{ e.content | slice:0:50 }}{{ e.content.length &gt; 50 ? &#x27;…&#x27; : &#x27;&#x27; }}&lt;/td&gt;
+          &lt;td&gt;&lt;span class&#x3D;&quot;fi fi-{{getCountryByLanguageCode(e.language)}} me-1&quot;&gt;&lt;/span&gt; {{formatLanguage(e.language)}}&lt;/td&gt;
+          &lt;td&gt;{{ formatDate(e.createdAt) }}&lt;/td&gt;
+          &lt;td&gt;{{ e.updatedAt ? formatDate(e.updatedAt) : &#x27;-&#x27; }}&lt;/td&gt;
+          &lt;td&gt;
+            &lt;button class&#x3D;&quot;btn btn-sm btn-outline-light me-1&quot; (click)&#x3D;&quot;edit(entryModalTemplate, e);toggleSpeak()&quot;&gt;&lt;i class&#x3D;&quot;fas fa-play&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+            &lt;button class&#x3D;&quot;btn btn-sm btn-outline-secondary me-1&quot; (click)&#x3D;&quot;edit(entryModalTemplate, e)&quot;&gt;&lt;i class&#x3D;&quot;fas fa-edit&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+            &lt;button class&#x3D;&quot;btn btn-sm btn-outline-danger&quot; (click)&#x3D;&quot;remove(e.id)&quot;&gt;&lt;i class&#x3D;&quot;fas fa-trash&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;entries.length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;text-center text-muted mt-3&quot;&gt;
+    No hay entradas todavía.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;voice-nav-widget&quot;&gt;
+    &lt;app-voice-nav (onTextListened)&#x3D;&quot;onVoiceNav($event)&quot; [currentLang]&#x3D;&quot;selectedLang&quot; (onLanguageChanged)&#x3D;&quot;changeLanguage($event)&quot;&gt;&lt;/app-voice-nav&gt;
+&lt;/div&gt;
+
+
+&lt;!-- Editor template modal --&gt;
+ &lt;ng-template #entryModalTemplate let-modal&gt;
+    &lt;div class&#x3D;&quot;modal-header&quot;&gt;
+      &lt;h5 class&#x3D;&quot;modal-title&quot; style&#x3D;&quot;width: calc(100% - 30px);&quot;&gt;
+        &lt;!-- &lt;input class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;Título&quot; [(ngModel)]&#x3D;&quot;title&quot; /&gt; --&gt;
+        &lt;app-voice-input placeholder&#x3D;&quot;Título&quot; [(ngModel)]&#x3D;&quot;title&quot; [darkMode]&#x3D;&quot;true&quot; [inputClass]&#x3D;&quot;&#x27;px-2 py-0&#x27;&quot; [currentLang]&#x3D;&quot;selectedLang&quot;&gt;&lt;/app-voice-input&gt;
+      &lt;/h5&gt;
+      &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn p-0 ms-3&quot; aria-label&#x3D;&quot;Cerrar&quot; (click)&#x3D;&quot;stopSpeech();modal.dismiss()&quot;&gt;
+        &lt;i class&#x3D;&quot;fas fa-close fs-5&quot;&gt;&lt;/i&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+        
+        &lt;div class&#x3D;&quot;d-flex gap-2&quot;&gt;
+            &lt;div class&#x3D;&quot;w-50 textarea-container&quot;&gt;
+                &lt;i class&#x3D;&quot;fas fa-copy cursor-pointer&quot; title&#x3D;&quot;Copy to clipboard&quot; (click)&#x3D;&quot;copyToClipboard(&#x27;source-textarea&#x27;)&quot; [ngClass]&#x3D;&quot;{disabled:content.length&#x3D;&#x3D;&#x3D;0}&quot;&gt;&lt;/i&gt;
+                &lt;textarea #textarea1 id&#x3D;&quot;source-textarea&quot; (scroll)&#x3D;&quot;syncScroll(textarea1, textarea2, $event)&quot; class&#x3D;&quot;form-control w-100&quot; rows&#x3D;&quot;20&quot; placeholder&#x3D;&quot;Escribe o dicta aquí...&quot; [disabled]&#x3D;&quot;speaking()&quot; [(ngModel)]&#x3D;&quot;content&quot; (ngModelChange)&#x3D;&quot;onTextChange($event)&quot;&gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;w-50 textarea-container&quot;&gt;
+                &lt;i class&#x3D;&quot;fas fa-copy cursor-pointer&quot; title&#x3D;&quot;Copy to clipboard&quot; (click)&#x3D;&quot;copyToClipboard(&#x27;target-textarea&#x27;)&quot; [ngClass]&#x3D;&quot;{disabled:contentTranslated.length&#x3D;&#x3D;&#x3D;0}&quot;&gt;&lt;/i&gt;
+                &lt;textarea #textarea2 id&#x3D;&quot;target-textarea&quot; (scroll)&#x3D;&quot;syncScroll(textarea2, textarea1, $event)&quot;  class&#x3D;&quot;form-control w-100&quot; rows&#x3D;&quot;20&quot; style&#x3D;&quot;font-style: italic;&quot; placeholder&#x3D;&quot;&quot; [disabled]&#x3D;&quot;true&quot; [(ngModel)]&#x3D;&quot;contentTranslated&quot;&gt;&lt;/textarea&gt;                
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Input --&gt;
+        &lt;h6&gt;Input&lt;/h6&gt;
+        &lt;div class&#x3D;&quot;d-flex align-items-center justify-content-between gap-2 my-2 w-100&quot;&gt;
+            &lt;div class&#x3D;&quot;d-flex&quot;&gt;
+                &lt;div class&#x3D;&quot;d-flex align-items-center&quot;&gt;
+                    &lt;i class&#x3D;&quot;fi fi-{{getCountryByLanguageCode(selectedLang)}} me-2&quot;&gt;&lt;/i&gt;
+                    &lt;select id&#x3D;&quot;langSelect&quot; class&#x3D;&quot;form-select w-auto&quot; [disabled]&#x3D;&quot;speaking()&quot; [(ngModel)]&#x3D;&quot;selectedLang&quot; (change)&#x3D;&quot;changeLanguage()&quot;&gt;
+                        &lt;ng-container *ngFor&#x3D;&quot;let languageItem of languages&quot;&gt;
+                            &lt;option value&#x3D;&quot;{{languageItem.code}}&quot;&gt;{{languageItem.label}}&lt;/option&gt;
+                        &lt;/ng-container&gt;
+                    &lt;/select&gt;
+                &lt;/div&gt;
+                &lt;button class&#x3D;&quot;btn btn-sm ms-2&quot; [ngClass]&#x3D;&quot;{&#x27;btn-outline-danger&#x27;:!listening(), &#x27;btn-danger&#x27;: listening()}&quot; [disabled]&#x3D;&quot;speaking()&quot; (click)&#x3D;&quot;toggleListening()&quot;&gt;
+                    &lt;i class&#x3D;&quot;fas fa-microphone&quot; [ngClass]&#x3D;&quot;{&#x27;fa-fade&#x27;: listening()}&quot;&gt;&lt;/i&gt; {{ listening() ? &#x27;Detener dictado&#x27; : &#x27;Dictar con voz&#x27; }}
+                &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;span *ngIf&#x3D;&quot;speech.isSupported&quot; class&#x3D;&quot;text-muted&quot;&gt;
+                Estado: &lt;span [ngClass]&#x3D;&quot;{&#x27;text-success&#x27;:listening()}&quot;&gt;{{ listening() ? &#x27;Escuchando…&#x27; : &#x27;Inactivo&#x27; }}&lt;/span&gt;
+            &lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Output --&gt;
+        &lt;ng-container *ngIf&#x3D;&quot;content.trim().length&gt;0&quot;&gt;
+        &lt;h6 class&#x3D;&quot;mt-4&quot;&gt;Output&lt;/h6&gt;
+        &lt;div class&#x3D;&quot;d-flex align-items-center justify-content-between gap-2 my-2 w-100&quot;&gt;
+            &lt;div class&#x3D;&quot;d-flex&quot;&gt;
+                
+                    &lt;div class&#x3D;&quot;d-flex align-items-center&quot;&gt;
+                        &lt;select id&#x3D;&quot;voiceSelect&quot; [disabled]&#x3D;&quot;speaking()&quot; class&#x3D;&quot;form-select w-auto&quot; [(ngModel)]&#x3D;&quot;selectedVoiceUri&quot; (change)&#x3D;&quot;changeVoice()&quot;&gt;
+                            &lt;ng-container *ngFor&#x3D;&quot;let voiceItem of voices&quot;&gt;
+                                &lt;option value&#x3D;&quot;{{voiceItem.voiceURI}}&quot;&gt;{{voiceItem.name}}&lt;/option&gt;
+                            &lt;/ng-container&gt;
+                        &lt;/select&gt;
+                    &lt;/div&gt;
+                    &lt;button class&#x3D;&quot;btn btn-sm btn-outline-info ms-2&quot; [disabled]&#x3D;&quot;listening()&quot; (click)&#x3D;&quot;toggleSpeak()&quot;&gt;
+                        &lt;ng-container *ngIf&#x3D;&quot;!speaking()&quot;&gt;&lt;i class&#x3D;&quot;fas fa-play&quot;&gt;&lt;/i&gt; Escuchar&lt;/ng-container&gt;
+                        &lt;ng-container *ngIf&#x3D;&quot;speaking()&quot;&gt;&lt;i class&#x3D;&quot;fas fa-stop&quot;&gt;&lt;/i&gt; Parar&lt;/ng-container&gt;
+                    &lt;/button&gt;
+                    &lt;button class&#x3D;&quot;btn btn-sm btn-outline-info ms-2&quot; [disabled]&#x3D;&quot;listening()&quot; *ngIf&#x3D;&quot;speaking()&quot; (click)&#x3D;&quot;togglePause()&quot;&gt;
+                        &lt;ng-container *ngIf&#x3D;&quot;!paused()&quot;&gt;&lt;i class&#x3D;&quot;fas fa-pause&quot;&gt;&lt;/i&gt; Pausar&lt;/ng-container&gt;
+                        &lt;ng-container *ngIf&#x3D;&quot;paused()&quot;&gt;&lt;i class&#x3D;&quot;fas fa-play&quot;&gt;&lt;/i&gt; Reanudar&lt;/ng-container&gt;
+                    &lt;/button&gt;
+                    &lt;div class&#x3D;&quot;d-flex justify-content-start align-items-center ms-4&quot;&gt;
+                        &lt;input [disabled]&#x3D;&quot;speaking()&quot; type&#x3D;&quot;range&quot; min&#x3D;&quot;0.5&quot; max&#x3D;&quot;1&quot; step&#x3D;&quot;0.1&quot; [(ngModel)]&#x3D;&quot;voiceSpeedRate&quot; class&#x3D;&quot;form-range&quot;&gt;
+                        &lt;span class&#x3D;&quot;text-gray ms-1&quot;&gt;{{ voiceSpeedRate }}x&lt;/span&gt;
+                    &lt;/div&gt;
+                
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;/ng-container&gt;
+
+        &lt;div class&#x3D;&quot;d-flex align-items-center my-2 w-100 p-2&quot;&gt;
+            &lt;span class&#x3D;&quot;text-primary ms-2&quot; *ngIf&#x3D;&quot;interim&quot;&gt;— &quot;{{ interim }}&quot;&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;button class&#x3D;&quot;btn btn-primary w-100&quot; [disabled]&#x3D;&quot;content.trim().length&#x3D;&#x3D;&#x3D;0 || speaking() || listening()&quot; (click)&#x3D;&quot;listening.set(false);save()&quot;&gt;
+            &lt;i class&#x3D;&quot;fas fa-save&quot;&gt;&lt;/i&gt; Guardar Entrada
+        &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/ng-template&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./diary.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">$bg-dark: #121212;
+$card-dark: #1e1e1e;
+$text-light: #f1f1f1;
+$primary-dark: #0d6efd;
+$success-dark: #198754;
+$danger-dark: #dc3545;
+$info-dark: #0dcaf0;
+
+
+/* Editor */
+.card {
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+textarea {
+  font-size: 13px;
+}
+
+textarea.form-control, input.form-control {
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+}
+
+/* Botones modernos */
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover, .btn-success:hover, .btn-danger:hover, .btn-info:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Tabla compacta y moderna */
+.table {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.table thead {
+  background-color: #343a40;
+  color: #fff;
+}
+
+.table td, .table th {
+  vertical-align: middle;
+}
+
+/* Indicador de dictado */
+.text-primary {
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Input file */
+input[type&#x3D;&quot;file&quot;] {
+  cursor: pointer;
+}
+
+/* Responsividad para móviles */
+@media (max-width: 576px) {
+  .d-flex {
+    flex-direction: column;
+  }
+  .gap-2 {
+    gap: 0.5rem;
+  }
+}
+
+.container {
+  min-width: 1200px; max-width: 1400px;
+  height: 100% !important;
+  min-height: 100vh !important;
+
+  &amp;.dark-mode {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+
+    .card {
+      background-color: #2a2a2a;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    input.form-control,
+    textarea.form-control,
+    select.form-select {
+      background-color: #2a2a2a;
+      color: #f1f1f1 !important;
+      border: 1px solid #444;
+
+      &amp;::placeholder {
+        color: #bbb; /* color de placeholder en modo oscuro */
+        opacity: 1;  /* asegurar que sea visible */
+      }
+    }
+
+    .table {
+      background-color: #2a2a2a;
+      color: #f1f1f1;
+
+      thead {
+        background-color: #333;
+        color: #f1f1f1;
+      }
+
+      tbody tr:hover {
+        background-color: #3a3a3a;
+      }
+    }
+
+    .btn-primary { background-color: #0d6efd; border-color: #0d6efd; }
+    .btn-success { background-color: #198754; border-color: #198754; }
+    .btn-danger { background-color: #dc3545; border-color: #dc3545; }
+    .btn-info { background-color: #0dcaf0; border-color: #0dcaf0; }
+
+    .text-primary { color: #0d6efd !important; }
+    .text-muted { color: #bbb !important; }
+  }
+}
+
+.textarea-wrapper {
+  position: relative;
+}
+
+.highlighted-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.375rem 0.75rem; // igual al padding del textarea
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  width: 100%;
+  color: #eee;
+  pointer-events: none; // permite que el textarea reciba los clics
+  z-index: 1;
+}
+
+textarea {
+  position: relative;
+  background: transparent;
+  color: transparent; // ocultamos texto del textarea para ver el div
+  caret-color: white; // el cursor sigue visible
+  z-index: 2;
+}
+
+.highlight {
+  background-color: yellow;
+  color: black;
+  border-radius: 2px;
+}
+
+.textarea-container {
+    position: relative;
+    top: -20px;
+    i {
+        position: relative;
+        z-index: 3;
+        left: 93%;
+        top: 7%;
+    }
+}
+
+.fas {
+  &amp;.fa-copy {
+    font-size: 18px;
+  }
+}
+
+.voice-nav-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container p-2 w-100 h-100" [ngClass]="{\'dark-mode\':darkMode()}">  <div class="d-flex justify-content-between align-items-center w-100">    <h1 class="mb-4 text-center">        Languify    </h1>    <!--    <button class="btn btn-sm btn-outline-secondary mb-3" (click)="toggleDarkMode()">        <i class="fas" [ngClass]="darkMode() ? \'fa-sun\' : \'fa-moon\'"></i>        {{ darkMode() ? \'Modo Claro\' : \'Modo Oscuro\' }}    </button>    -->    <div class="d-flex align-items-center">        <input #fileInput type="file" style="width: auto;" class="form-control m-0" (change)="importFileEvent($event)" />    </div>  </div>    <!-- Controles superiores -->  <div class="d-flex flex-fill align-items-center gap-1 mb-3">    <app-voice-input placeholder="Buscar..." [(ngModel)]="query" (ngModelChange)="search()" [currentLang]="selectedLang" [darkMode]="true"></app-voice-input>  </div>  <!-- Lista de entradas con tabla -->  <div class="d-flex w-100 justify-content-between align-items-center">    <h5 class="my-3">Entradas</h5>    <div class="d-flex gap-2">        <button class="btn btn-sm btn-primary" (click)="newEntry(entryModalTemplate)"><i class="fas fa-plus"></i> Nueva entrada</button>        <button class="btn btn-sm btn-success" (click)="export()"><i class="fas fa-file-export"></i> Exportar JSON</button>    </div>  </div>    <div *ngIf="entries.length > 0" class="table-responsive">    <table class="table table-sm table-striped table-hover align-middle" [ngClass]="{\'table-dark\':darkMode()}">      <thead class="table-dark">        <tr>          <th>#</th>          <th (click)="sort(\'title\')" style="cursor: pointer;">Título <i *ngIf="sortBy===\'title\'" class="fa" [class.fa-arrow-up]="sortAsc" [class.fa-arrow-down]="!sortAsc"></i></th>          <th>Contenido</th>          <th (click)="sort(\'language\')" style="cursor: pointer;">Idioma <i *ngIf="sortBy===\'language\'" class="fa" [class.fa-arrow-up]="sortAsc" [class.fa-arrow-down]="!sortAsc"></i></th>          <th (click)="sort(\'created\')" style="cursor: pointer;">Creado <i *ngIf="sortBy===\'created\'" class="fa" [class.fa-arrow-up]="sortAsc" [class.fa-arrow-down]="!sortAsc"></i></th>          <th (click)="sort(\'updated\')" style="cursor: pointer;">Actualizado <i *ngIf="sortBy===\'updated\'" class="fa" [class.fa-arrow-up]="sortAsc" [class.fa-arrow-down]="!sortAsc"></i></th>          <th>Acciones</th>        </tr>      </thead>      <tbody>        <tr *ngFor="let e of entries; let idx=index; trackBy: trackById">          <td>{{idx+1}}</td>          <td>{{ e.title }}</td>          <td title="{{e.content}}">{{ e.content | slice:0:50 }}{{ e.content.length > 50 ? \'…\' : \'\' }}</td>          <td><span class="fi fi-{{getCountryByLanguageCode(e.language)}} me-1"></span> {{formatLanguage(e.language)}}</td>          <td>{{ formatDate(e.createdAt) }}</td>          <td>{{ e.updatedAt ? formatDate(e.updatedAt) : \'-\' }}</td>          <td>            <button class="btn btn-sm btn-outline-light me-1" (click)="edit(entryModalTemplate, e);toggleSpeak()"><i class="fas fa-play"></i></button>            <button class="btn btn-sm btn-outline-secondary me-1" (click)="edit(entryModalTemplate, e)"><i class="fas fa-edit"></i></button>            <button class="btn btn-sm btn-outline-danger" (click)="remove(e.id)"><i class="fas fa-trash"></i></button>          </td>        </tr>      </tbody>    </table>  </div>  <div *ngIf="entries.length === 0" class="text-center text-muted mt-3">    No hay entradas todavía.  </div></div><div class="voice-nav-widget">    <app-voice-nav (onTextListened)="onVoiceNav($event)" [currentLang]="selectedLang" (onLanguageChanged)="changeLanguage($event)"></app-voice-nav></div><!-- Editor template modal --> <ng-template #entryModalTemplate let-modal>    <div class="modal-header">      <h5 class="modal-title" style="width: calc(100% - 30px);">        <!-- <input class="form-control" placeholder="Título" [(ngModel)]="title" /> -->        <app-voice-input placeholder="Título" [(ngModel)]="title" [darkMode]="true" [inputClass]="\'px-2 py-0\'" [currentLang]="selectedLang"></app-voice-input>      </h5>      <button type="button" class="btn p-0 ms-3" aria-label="Cerrar" (click)="stopSpeech();modal.dismiss()">        <i class="fas fa-close fs-5"></i>      </button>    </div>    <div class="modal-body">                <div class="d-flex gap-2">            <div class="w-50 textarea-container">                <i class="fas fa-copy cursor-pointer" title="Copy to clipboard" (click)="copyToClipboard(\'source-textarea\')" [ngClass]="{disabled:content.length===0}"></i>                <textarea #textarea1 id="source-textarea" (scroll)="syncScroll(textarea1, textarea2, $event)" class="form-control w-100" rows="20" placeholder="Escribe o dicta aquí..." [disabled]="speaking()" [(ngModel)]="content" (ngModelChange)="onTextChange($event)"></textarea>            </div>            <div class="w-50 textarea-container">                <i class="fas fa-copy cursor-pointer" title="Copy to clipboard" (click)="copyToClipboard(\'target-textarea\')" [ngClass]="{disabled:contentTranslated.length===0}"></i>                <textarea #textarea2 id="target-textarea" (scroll)="syncScroll(textarea2, textarea1, $event)"  class="form-control w-100" rows="20" style="font-style: italic;" placeholder="" [disabled]="true" [(ngModel)]="contentTranslated"></textarea>                            </div>        </div>        <!-- Input -->        <h6>Input</h6>        <div class="d-flex align-items-center justify-content-between gap-2 my-2 w-100">            <div class="d-flex">                <div class="d-flex align-items-center">                    <i class="fi fi-{{getCountryByLanguageCode(selectedLang)}} me-2"></i>                    <select id="langSelect" class="form-select w-auto" [disabled]="speaking()" [(ngModel)]="selectedLang" (change)="changeLanguage()">                        <ng-container *ngFor="let languageItem of languages">                            <option value="{{languageItem.code}}">{{languageItem.label}}</option>                        </ng-container>                    </select>                </div>                <button class="btn btn-sm ms-2" [ngClass]="{\'btn-outline-danger\':!listening(), \'btn-danger\': listening()}" [disabled]="speaking()" (click)="toggleListening()">                    <i class="fas fa-microphone" [ngClass]="{\'fa-fade\': listening()}"></i> {{ listening() ? \'Detener dictado\' : \'Dictar con voz\' }}                </button>            </div>            <span *ngIf="speech.isSupported" class="text-muted">                Estado: <span [ngClass]="{\'text-success\':listening()}">{{ listening() ? \'Escuchando…\' : \'Inactivo\' }}</span>            </span>        </div>        <!-- Output -->        <ng-container *ngIf="content.trim().length>0">        <h6 class="mt-4">Output</h6>        <div class="d-flex align-items-center justify-content-between gap-2 my-2 w-100">            <div class="d-flex">                                    <div class="d-flex align-items-center">                        <select id="voiceSelect" [disabled]="speaking()" class="form-select w-auto" [(ngModel)]="selectedVoiceUri" (change)="changeVoice()">                            <ng-container *ngFor="let voiceItem of voices">                                <option value="{{voiceItem.voiceURI}}">{{voiceItem.name}}</option>                            </ng-container>                        </select>                    </div>                    <button class="btn btn-sm btn-outline-info ms-2" [disabled]="listening()" (click)="toggleSpeak()">                        <ng-container *ngIf="!speaking()"><i class="fas fa-play"></i> Escuchar</ng-container>                        <ng-container *ngIf="speaking()"><i class="fas fa-stop"></i> Parar</ng-container>                    </button>                    <button class="btn btn-sm btn-outline-info ms-2" [disabled]="listening()" *ngIf="speaking()" (click)="togglePause()">                        <ng-container *ngIf="!paused()"><i class="fas fa-pause"></i> Pausar</ng-container>                        <ng-container *ngIf="paused()"><i class="fas fa-play"></i> Reanudar</ng-container>                    </button>                    <div class="d-flex justify-content-start align-items-center ms-4">                        <input [disabled]="speaking()" type="range" min="0.5" max="1" step="0.1" [(ngModel)]="voiceSpeedRate" class="form-range">                        <span class="text-gray ms-1">{{ voiceSpeedRate }}x</span>                    </div>                            </div>        </div>        </ng-container>        <div class="d-flex align-items-center my-2 w-100 p-2">            <span class="text-primary ms-2" *ngIf="interim">— "{{ interim }}"</span>        </div>        <button class="btn btn-primary w-100" [disabled]="content.trim().length===0 || speaking() || listening()" (click)="listening.set(false);save()">            <i class="fas fa-save"></i> Guardar Entrada        </button>    </div>  </ng-template></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DiaryComponent', 'selector': 'app-diary'},{'name': 'VoiceInputComponent', 'selector': 'app-voice-input'},{'name': 'VoiceNavComponent', 'selector': 'app-voice-nav'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'DiaryComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DiaryComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<div class="input-group d-flex">
+    <input
+    #nativeInput
+    type="text"
+    [id]="id"
+    [name]="name"
+    [attr.placeholder]="placeholder"
+    [attr.autocomplete]="autocomplete"
+    [attr.maxlength]="maxlength"
+    [disabled]="isDisabled"
+    [value]="value"
+    class="vi-native-input flex-fill {{inputClass}}"
+    [attr.aria-label]="ariaLabel"
+    (input)="onInput($event)"
+    [ngClass]="{'dark-mode': darkMode}"
+    />
+    <div class="input-group-append">
+
+        <ng-container *ngIf="value.length>0">
+            <i class="fas fa-close" (click)="updateValue('')" [ngClass]="{'dark-mode': darkMode}"></i>
+        </ng-container>
+        
+        <span class="input-group-text p-0">
+            <div class="d-flex">
+                <button class="btn text-center" [ngClass]="{'btn-secondary': !listening(), 'btn-danger': listening()}" (click)="toggleListen()">
+                    <ng-container *ngIf="listening()">
+                        <i class="fas fa-stop fa-fade"></i>
+                    </ng-container>
+                    <ng-container *ngIf="!listening()">
+                        <i class="fas fa-microphone"></i>
+                    </ng-container>
+                </button>
+                <select id="langSelect2" class="form-control w-auto" [(ngModel)]="currentLang" (ngModelChange)="changeLanguage()">
+                    <ng-container *ngFor="let languageItem of languages">
+                        <option value="{{languageItem.code}}" title="{{languageItem.label}}">{{getLanguageByLanguageCode(languageItem.code)}} {{(getLanguageByLanguageCode(languageItem.code)!==getCountryByLanguageCode(languageItem.code)?('['+getCountryByLanguageCode(languageItem.code).toUpperCase()+']'):'')}}</option>
+                    </ng-container>
+                </select>
+            </div>
+        </span>
+    </div>
+</div>
+

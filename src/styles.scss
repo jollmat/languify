@@ -1,1 +1,100 @@
 /* You can add global styles to this file, and also import other style files */
+//@import "flag-icons/css/flag-icons.min.css";
+@import "https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css";
+
+// "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+
+body {
+    font-size: 13px;
+    background-color: transparent;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    .text-gray { color: #ccc; }
+
+    &.dark-mode {
+        background-color: #333;
+
+        h1, .table > :not(caption) > * > * {
+            color: #ccc !important;
+        }
+
+        input {
+            color: #333 !important;
+        }
+
+        .dark-modal .modal-content {
+            background-color: #1e1e1e !important;
+            color: #eee !important;
+            border-radius: 12px !important;
+            border: 1px solid #444 !important;
+            box-shadow: 0 0 20px rgba(0,0,0,0.6) !important;
+        }
+
+        .dark-modal .modal-header,
+        .dark-modal .modal-body,
+        .dark-modal .modal-footer {
+            background-color: #1e1e1e !important;
+            color: #eee !important;
+        }
+
+        .dark-modal .form-control {
+            background-color: #2a2a2a !important;
+            color: #ccc !important;
+            border: 1px solid #555 !important;
+        }
+
+        .dark-modal button {
+            color: #ccc !important;
+        }
+
+        .dark-modal .form-control::placeholder {
+            color: #aaa !important;
+        }
+    }
+
+    .form-control {
+        font-size: 13px;
+    }
+
+    .form-select:disabled {
+        background-color: transparent;
+        opacity: .3;
+    }
+
+    .btn.disabled, .btn:disabled, .form-range:disabled {
+        opacity: .3;
+    }
+}
+
+
+/* Cambia el color de fondo, borde y texto */
+.form-select {
+  background-color: #2a2a2a;   /* Fondo oscuro */
+  color: #ccc;                 /* Texto claro */
+  border: 1px solid #555;      /* Borde personalizado */
+  border-radius: 8px;           /* Bordes redondeados */
+  font-size: 13px;
+}
+
+/* Placeholder / opción deshabilitada */
+.form-select option:disabled {
+  color: #aaa;
+}
+
+/* Hover / foco */
+.form-select:focus {
+  border-color: #999;
+  box-shadow: 0 0 0 0.2rem rgba(255,255,255,0.25);
+  background-color: #2a2a2a;
+  color: #eee;
+}
+
+.cursor-pointer { cursor: pointer; }
+
+.fas {
+    &.disabled {
+        opacity: .4;
+        cursor: not-allowed;
+    }
+}
+

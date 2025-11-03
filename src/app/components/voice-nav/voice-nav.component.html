@@ -1,0 +1,16 @@
+<div class="d-flex">
+    <button class="btn text-center" [ngClass]="{'btn-secondary': !listening(), 'btn-danger': listening(), 'no-text':!listeningText}" (click)="toggleListen()">
+        <ng-container *ngIf="listening()">
+            <i class="fas fa-microphone fa-fade" [ngClass]="{'me-2':listeningText}"></i><span *ngIf="listeningText">{{listeningText}}</span>
+        </ng-container>
+        <ng-container *ngIf="!listening()">
+            <i class="fas fa-microphone me-2" [ngClass]="{'me-2':noListeningText}"></i><span *ngIf="noListeningText">{{noListeningText}}</span>
+        </ng-container>
+    </button>
+    <select id="langSelect2" class="form-control w-auto" [(ngModel)]="currentLang" (change)="changeLanguage()">
+        <ng-container *ngFor="let languageItem of languages">
+            <option value="{{languageItem.code}}" title="{{languageItem.label}}">{{getLanguageByLanguageCode(languageItem.code)}} {{(getLanguageByLanguageCode(languageItem.code)!==getCountryByLanguageCode(languageItem.code)?('['+getCountryByLanguageCode(languageItem.code).toUpperCase()+']'):'')}}</option>
+        </ng-container>
+    </select>
+</div>
+

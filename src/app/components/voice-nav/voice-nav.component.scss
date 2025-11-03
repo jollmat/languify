@@ -1,0 +1,15 @@
+$max_width: 250px;
+$bradius: 4px;
+
+button {
+    border-radius: $bradius 0 0 $bradius;
+    width: $max_width;
+    z-index: 1000;
+    &.no-text {
+        width: auto;
+    }
+}
+
+select {
+    border-radius: 0 $bradius $bradius 0;
+}
