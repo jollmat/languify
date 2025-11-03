@@ -1,0 +1,3 @@
+ng build --output-path docs --base-href "https://github.com/jollmat/languify/"
+
+ng deploy --base-href "https://jollmat.github.io/languify/"
