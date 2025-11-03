@@ -47,13 +47,16 @@ input {
 i {
   &.fa-close {
     position: absolute;
-    left: calc(100% - 155px);
+    left: calc(100% - 75px);
     top: 10px;
     font-size: 16px;
     cursor: pointer;
 
     &.dark-mode {
       color: #d2d2d2 !important;
+    }
+    &.multilanguage {
+      left: calc(100% - 155px);
     }
   }
 }
