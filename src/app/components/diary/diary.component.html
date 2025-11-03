@@ -20,7 +20,7 @@
     
     <!-- Controles superiores -->
     <div class="d-flex flex-fill align-items-center gap-1 mb-3">
-      <app-voice-input placeholder="Buscar..." [multilanguage]="true" [(ngModel)]="query" (ngModelChange)="search()" [currentLang]="selectedLang" [darkMode]="true"></app-voice-input>
+      <app-voice-input placeholder="Search..." [multilanguage]="true" [(ngModel)]="query" (ngModelChange)="search()" [currentLang]="selectedLang" [darkMode]="true"></app-voice-input>
     </div>
 
     <!-- Lista de entradas con tabla -->
@@ -45,7 +45,7 @@
           <th *ngIf="columns.voice.visible" (click)="sort('voice')" style="cursor: pointer;">Voice <i *ngIf="sortBy==='voice'" class="fa" [class.fa-arrow-up]="sortAsc" [class.fa-arrow-down]="!sortAsc"></i></th>
           <th *ngIf="columns.created.visible" (click)="sort('created')" style="cursor: pointer;">Created <i *ngIf="sortBy==='created'" class="fa" [class.fa-arrow-up]="sortAsc" [class.fa-arrow-down]="!sortAsc"></i></th>
           <th *ngIf="columns.updated.visible" (click)="sort('updated')" style="cursor: pointer;">Updated <i *ngIf="sortBy==='updated'" class="fa" [class.fa-arrow-up]="sortAsc" [class.fa-arrow-down]="!sortAsc"></i></th>
-          <th class="text-end">Acciones</th>
+          <th class="text-end">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -87,8 +87,7 @@
  <ng-template #entryModalTemplate let-modal>
     <div class="modal-header">
       <h5 class="modal-title" style="width: calc(100% - 30px);">
-        <!-- <input class="form-control" placeholder="Título" [(ngModel)]="title" /> -->
-        <app-voice-input placeholder="Título" [(ngModel)]="title" [darkMode]="true" [inputClass]="'px-2 py-0'" [currentLang]="selectedLang"></app-voice-input>
+        <app-voice-input placeholder="Title" [(ngModel)]="title" [darkMode]="true" [inputClass]="'px-2 py-0'" [currentLang]="selectedLang"></app-voice-input>
       </h5>
       <button type="button" class="btn p-0 ms-3" aria-label="Cerrar" (click)="stopSpeech();modal.dismiss()">
         <i class="fas fa-close fs-5"></i>
@@ -110,11 +109,11 @@
                     </select>
                 </div>
                 <button class="btn btn-sm ms-2" [ngClass]="{'btn-outline-danger':!listening(), 'btn-danger': listening()}" [disabled]="speaking()" (click)="toggleListening()">
-                    <i class="fas fa-microphone" [ngClass]="{'fa-fade': listening()}"></i> {{ listening() ? 'Detener dictado' : 'Dictar con voz' }}
+                    <i class="fas fa-microphone" [ngClass]="{'fa-fade': listening()}"></i> {{ listening() ? 'Stop dictation' : 'Dictate with your voice' }}
                 </button>
             </div>
             <span *ngIf="speech.isSupported" class="text-muted">
-                Estado: <span [ngClass]="{'text-success':listening()}">{{ listening() ? 'Escuchando…' : 'Inactivo' }}</span>
+                Status: <span [ngClass]="{'text-success':listening()}">{{ listening() ? 'Escuchando…' : 'Inactivo' }}</span>
             </span>
         </div>
         
