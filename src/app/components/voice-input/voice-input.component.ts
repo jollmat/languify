@@ -7,7 +7,6 @@ import {
   Output,
   ViewChild,
   ElementRef,
-  AfterViewInit,
   signal,
   OnInit,
   NgZone
@@ -52,6 +51,7 @@ export class VoiceInputComponent implements OnInit, ControlValueAccessor {
   @Input() autocomplete?: string;
   @Input() maxlength?: number | string;
   @Input() ariaLabel?: string;
+  @Input() multilanguage = false;
 
   @Input() darkMode = false;
   @Input() inputClass = '';
@@ -187,6 +187,10 @@ export class VoiceInputComponent implements OnInit, ControlValueAccessor {
   getCountryByLanguageCode(languageCode: string): string {
     const parts = languageCode.split('-');
     return parts.length === 2 ? parts[1].toLowerCase() : '';
+  }
+
+  getCurrentLanguage() {
+    return this.languages.find((_language) => _language.code===this.currentLang);
   }
 
   registerOnChange(fn: any): void {

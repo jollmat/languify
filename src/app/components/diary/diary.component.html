@@ -17,7 +17,7 @@
   
   <!-- Controles superiores -->
   <div class="d-flex flex-fill align-items-center gap-1 mb-3">
-    <app-voice-input placeholder="Buscar..." [(ngModel)]="query" (ngModelChange)="search()" [currentLang]="selectedLang" [darkMode]="true"></app-voice-input>
+    <app-voice-input placeholder="Buscar..." [multilanguage]="true" [(ngModel)]="query" (ngModelChange)="search()" [currentLang]="selectedLang" [darkMode]="true"></app-voice-input>
   </div>
 
   <!-- Lista de entradas con tabla -->

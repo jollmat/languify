@@ -22,7 +22,7 @@
         
         <span class="input-group-text p-0">
             <div class="d-flex">
-                <button class="btn text-center" [ngClass]="{'btn-secondary': !listening(), 'btn-danger': listening()}" (click)="toggleListen()">
+                <button title="{{getCurrentLanguage()?.label}}" class="btn text-center" [ngClass]="{'btn-secondary': !listening(), 'btn-danger': listening()}" (click)="toggleListen()">
                     <ng-container *ngIf="listening()">
                         <i class="fas fa-stop fa-fade"></i>
                     </ng-container>
@@ -30,7 +30,7 @@
                         <i class="fas fa-microphone"></i>
                     </ng-container>
                 </button>
-                <select id="langSelect2" class="form-control w-auto" [(ngModel)]="currentLang" (ngModelChange)="changeLanguage()">
+                <select *ngIf="multilanguage" id="langSelect2" class="form-control w-auto" [(ngModel)]="currentLang" (ngModelChange)="changeLanguage()">
                     <ng-container *ngFor="let languageItem of languages">
                         <option value="{{languageItem.code}}" title="{{languageItem.label}}">{{getLanguageByLanguageCode(languageItem.code)}} {{(getLanguageByLanguageCode(languageItem.code)!==getCountryByLanguageCode(languageItem.code)?('['+getCountryByLanguageCode(languageItem.code).toUpperCase()+']'):'')}}</option>
                     </ng-container>
