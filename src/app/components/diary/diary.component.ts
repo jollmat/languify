@@ -9,6 +9,7 @@ import { Entry } from '../../model/interfaces/entry.interface';
 import { TranslationService } from '../../services/translation.service';
 import { VoiceNavComponent } from "../voice-nav/voice-nav.component";
 import { VoiceInputComponent } from '../voice-input/voice-input.component';
+import { DeviceService } from '../../services/device.service';
 
 @Component({
   selector: 'app-diary',
@@ -81,11 +82,19 @@ export class DiaryComponent implements OnInit, OnDestroy {
 
   languages: {code: string, label: string}[] = [];
 
-  constructor(private diary: DiaryService, public speech: SpeechService, private modalService: NgbModal, private translationService: TranslationService) {
-    this.languages = this.speech.getLanguages();
-    this.loadVoices();
-    // Algunos navegadores requieren este evento
-    window.speechSynthesis.onvoiceschanged = () => this.loadVoices();
+  isTablet = signal(false);
+  isDesktop = signal(false);
+
+  constructor(
+    private readonly diary: DiaryService, 
+    public readonly speech: SpeechService, 
+    private readonly modalService: NgbModal,
+    private readonly deviceService: DeviceService,
+    private readonly translationService: TranslationService) {
+      this.languages = this.speech.getLanguages();
+      this.loadVoices();
+      // Algunos navegadores requieren este evento
+      window.speechSynthesis.onvoiceschanged = () => this.loadVoices();
   }
 
   ngOnInit() {
@@ -99,6 +108,9 @@ export class DiaryComponent implements OnInit, OnDestroy {
         this.translate();
       }));
     }
+
+    this.deviceService.tablet$.subscribe(val => this.isTablet.set(val));
+    this.deviceService.desktop$.subscribe(val => this.isDesktop.set(val));
   }
 
   ngOnDestroy() { 

@@ -31,7 +31,7 @@
   </div>
   
   <div *ngIf="entries.length > 0" class="table-responsive">
-    <table class="table table-sm table-striped table-hover align-middle" [ngClass]="{'table-dark':darkMode()}">
+    <table class="table table-sm table-striped table-hover align-middle" [ngClass]="{'table-dark':darkMode(), 'table-sm':isDesktop()}">
       <thead class="table-dark">
         <tr>
           <th>#</th>
