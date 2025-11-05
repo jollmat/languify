@@ -61,6 +61,8 @@ export class VoiceInputComponent implements OnInit, ControlValueAccessor {
   @Output() focus = new EventEmitter<FocusEvent>();
   @Output() blur = new EventEmitter<FocusEvent>();
 
+  @Output() languageChange = new EventEmitter<string>();
+
   @Input()
   currentLang = 'es-ES';
 
@@ -117,6 +119,7 @@ export class VoiceInputComponent implements OnInit, ControlValueAccessor {
 
   changeLanguage() {
     this.recognition.lang = this.currentLang;
+    this.languageChange.emit(this.currentLang);
   }
 
   configSpeechRecognition() {

@@ -87,7 +87,7 @@
  <ng-template #entryModalTemplate let-modal>
     <div class="modal-header">
       <h5 class="modal-title" style="width: calc(100% - 30px);">
-        <app-voice-input placeholder="Title" [multilanguage]="true" [(ngModel)]="title" [darkMode]="true" [inputClass]="'px-2 py-0'" [currentLang]="selectedLang"></app-voice-input>
+        <app-voice-input placeholder="Title" [multilanguage]="true" [(ngModel)]="title" [darkMode]="true" [inputClass]="'px-2 py-0'" [currentLang]="selectedLang" (languageChange)="changeLanguage($event)"></app-voice-input>
       </h5>
       <button type="button" class="btn p-0 ms-3" aria-label="Cerrar" (click)="stopSpeech();modal.dismiss()">
         <i class="fas fa-close fs-5"></i>
